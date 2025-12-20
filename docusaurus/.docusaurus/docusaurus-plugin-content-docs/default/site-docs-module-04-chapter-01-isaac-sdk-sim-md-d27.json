@@ -1,0 +1,28 @@
+{
+  "id": "module-04/chapter-01-isaac-sdk-sim",
+  "title": "Chapter 1: Introduction to Isaac SDK and Isaac Sim",
+  "description": "Welcome to the first chapter of our exploration into the NVIDIA Isaac platform. In this chapter, we will introduce the two core components of the Isaac ecosystem: the NVIDIA Isaac SDK and NVIDIA Isaac Sim. We will cover their features, installation, and basic usage, and guide you through your first simulation in the Isaac Sim environment.",
+  "source": "@site/docs/module-04/chapter-01-isaac-sdk-sim.md",
+  "sourceDirName": "module-04",
+  "slug": "/module-04/chapter-01-isaac-sdk-sim",
+  "permalink": "/docs/module-04/chapter-01-isaac-sdk-sim",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-04/chapter-01-isaac-sdk-sim.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "chapter-01-isaac-sdk-sim",
+    "title": "Chapter 1: Introduction to Isaac SDK and Isaac Sim",
+    "sidebar_label": "Isaac SDK & Sim"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introduction to Module 4",
+    "permalink": "/docs/module-04-intro"
+  },
+  "next": {
+    "title": "Chapter 1: Quiz",
+    "permalink": "/docs/module-04/chapter-01-quiz"
+  }
+}
