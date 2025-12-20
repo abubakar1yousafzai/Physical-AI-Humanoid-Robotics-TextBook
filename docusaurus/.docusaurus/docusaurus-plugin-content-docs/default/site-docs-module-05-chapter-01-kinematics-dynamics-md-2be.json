@@ -1,0 +1,28 @@
+{
+  "id": "module-05/chapter-01-kinematics-dynamics",
+  "title": "Chapter 1: Humanoid Robot Kinematics and Dynamics",
+  "description": "Welcome to the first chapter of our module on humanoid robotics. In this chapter, we will lay the foundation for understanding how humanoid robots move by exploring the key concepts of kinematics and dynamics. These two fields are fundamental to the design, control, and simulation of any robotic system, and they are particularly complex and crucial for highly articulated humanoids.",
+  "source": "@site/docs/module-05/chapter-01-kinematics-dynamics.md",
+  "sourceDirName": "module-05",
+  "slug": "/module-05/chapter-01-kinematics-dynamics",
+  "permalink": "/docs/module-05/chapter-01-kinematics-dynamics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-05/chapter-01-kinematics-dynamics.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "chapter-01-kinematics-dynamics",
+    "title": "Chapter 1: Humanoid Robot Kinematics and Dynamics",
+    "sidebar_label": "Kinematics & Dynamics"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introduction to Module 5",
+    "permalink": "/docs/module-05-intro"
+  },
+  "next": {
+    "title": "Quiz",
+    "permalink": "/docs/module-05/chapter-01-quiz"
+  }
+}

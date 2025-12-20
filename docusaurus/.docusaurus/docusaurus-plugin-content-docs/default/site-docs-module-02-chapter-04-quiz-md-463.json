@@ -1,0 +1,26 @@
+{
+  "id": "module-02/chapter-04-quiz",
+  "title": "Chapter 4: Quiz",
+  "description": "<Quiz questions={[",
+  "source": "@site/docs/module-02/chapter-04-quiz.md",
+  "sourceDirName": "module-02",
+  "slug": "/module-02/chapter-04-quiz",
+  "permalink": "/docs/module-02/chapter-04-quiz",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-02/chapter-04-quiz.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Chapter 4: Quiz"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 4: Launch Files and Parameters",
+    "permalink": "/docs/module-02/chapter-04-launch-parameters"
+  },
+  "next": {
+    "title": "Introduction to Module 3",
+    "permalink": "/docs/module-03-intro"
+  }
+}

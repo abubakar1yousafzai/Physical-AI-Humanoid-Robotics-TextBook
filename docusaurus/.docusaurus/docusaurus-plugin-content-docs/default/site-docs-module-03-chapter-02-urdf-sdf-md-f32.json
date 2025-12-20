@@ -1,0 +1,28 @@
+{
+  "id": "module-03/chapter-02-urdf-sdf",
+  "title": "Chapter 2: Creating Robot Models with URDF and SDF",
+  "description": "Now that you have Gazebo up and running and have experimented with basic object manipulation, it's time to elevate our virtual robotics capabilities. This chapter will guide you through the process of moving beyond simple shapes to creating a sophisticated, articulated model of a complete robot. In the interconnected world of ROS (Robot Operating System) and Gazebo, there are two primary, XML-based formats used for describing a robot's physical and functional structure: the Unified Robot Description Format (URDF) and the Simulation Description Format (SDF). We will delve into both, detailing their syntax, capabilities, inherent limitations, and critically, when to use each for optimal results in your robotics projects. Understanding these formats is fundamental to building any robot in simulation.",
+  "source": "@site/docs/module-03/chapter-02-urdf-sdf.md",
+  "sourceDirName": "module-03",
+  "slug": "/module-03/chapter-02-urdf-sdf",
+  "permalink": "/docs/module-03/chapter-02-urdf-sdf",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-03/chapter-02-urdf-sdf.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "chapter-02-urdf-sdf",
+    "title": "Chapter 2: Creating Robot Models with URDF and SDF",
+    "sidebar_label": "URDF and SDF"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 1: Quiz",
+    "permalink": "/docs/module-03/chapter-01-quiz"
+  },
+  "next": {
+    "title": "Chapter 2: Quiz",
+    "permalink": "/docs/module-03/chapter-02-quiz"
+  }
+}

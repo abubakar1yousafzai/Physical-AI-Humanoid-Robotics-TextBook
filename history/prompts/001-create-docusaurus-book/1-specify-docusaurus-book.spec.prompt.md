@@ -1,0 +1,46 @@
+---
+id: 1
+title: Specify Docusaurus Book
+stage: spec
+date: 2025-12-14
+surface: agent
+model: gemini-pro
+feature: 001-create-docusaurus-book
+branch: 001-create-docusaurus-book
+user: 
+command: /sp.specify
+labels: [spec]
+links:
+  spec: specs/001-create-docusaurus-book/spec.md
+  ticket: null
+  adr: null
+  pr: null
+files:
+ - specs/001-create-docusaurus-book/spec.md
+ - specs/001-create-docusaurus-book/checklists/requirements.md
+tests:
+ - none
+---
+
+## Prompt
+
+/sp.specify Project: Physical AI & Humanoid Robotics Core Specifications: -Complete Docusaurus-based textbook with 6 modules -Interactive learning with quizzes at end of each chapter -Professional educational content for robotics students -Mobile-responsive with modern documentation design Content Structure: -PREFACE: Welcome page with book overview (800-1000 words) -MODULE 1: Introduction to Physical AI (4 chapters) -MODULE 2: ROS 2 Fundamentals (4 chapters) -MODULE 3: Robot Simulation with Gazebo (4 chapters) -MODULE 4: NVIDIA Isaac Platform (4 chapters) -MODULE 5: Humanoid Robot Development (4 chapters) -MODULE 6: Conversational Robotics (3 chapters) -Total: 25 chapters + 6 module intro pages + 1 preface File Organization: -Preface: `docs/preface.md` -Module intros: `docs/module-0X-intro.md` -Chapters: `docs/module-0X/chapter-0Y-topic.md` -Sidebar config: `sidebars.js` Module Breakdown: Module 1 - Introduction to Physical AI: -Module intro: Overview, goals, learning objectives -Chapter 1: Foundations of Physical AI and embodied intelligence -Chapter 2: From digital AI to robots that understand physical laws -Chapter 3: Overview of humanoid robotics landscape -Chapter 4: Sensor systems (LIDAR, cameras, IMUs, force/torque sensors) Module 2 - ROS 2 Fundamentals: -Module intro: ROS 2 overview, why industry standard, setup requirements -Chapter 1: ROS 2 architecture and core concepts -Chapter 2: Nodes, topics, services, and actions -Chapter 3: Building ROS 2 packages with Python -Chapter 4: Launch files and parameter management Module 3 - Robot Simulation with Gazebo: -Module intro: Simulation importance, tools overview (Gazebo/Unity) -Chapter 1: Gazebo simulation environment setup -Chapter 2: URDF and SDF robot description formats -Chapter 3: Physics simulation and sensor simulation -Chapter 4: Introduction to Unity for robot visualization Module 4 - NVIDIA Isaac Platform: -Module intro: NVIDIA Isaac ecosystem, AI-powered robotics, hardware requirements -Chapter 1: NVIDIA Isaac SDK and Isaac Sim -Chapter 2: AI-powered perception and manipulation -Chapter 3: Reinforcement learning for robot control -Chapter 4: Sim-to-real transfer techniques Module 5 - Humanoid Robot Development: -Module intro: Humanoid robotics, why humanoid form, industry applications -Chapter 1: Humanoid robot kinematics and dynamics -Chapter 2: Bipedal locomotion and balance control -Chapter 3: Manipulation and grasping with humanoid hands -Chapter 4: Natural human-robot interaction design Module 6 - Conversational Robotics: -Module intro: Conversational AI in robotics, LLM convergence, future outlook -Chapter 1: Integrating GPT models for conversational AI in robots -Chapter 2: Speech recognition and natural language understanding -Chapter 3: Multi-modal interaction (speech, gesture, vision) Chapter Requirements (Each chapter must include): -Header: Chapter number, title, estimated reading time, learning objectives (3-5 points) -Introduction: Overview, why it matters, real-world applications -Main content: Clear subheadings (H2/H3), explanations, technical concepts simplified -Code examples: Syntax highlighted, language specified, comments, runnable, installation instructions -Visual aids: Diagrams, tables, callout boxes for notes/warnings/tips -Practical exercise: Hands-on activity with step-by-step instructions -Interactive quiz: 5-10 multiple choice questions with explanations -Summary: Key takeaways (3-5 points), learning objectives recap -Resources: Documentation links, reading materials, videos, research papers Quiz Format: -5-10 multiple choice questions per chapter -Questions test key concepts from chapter content -Mix of difficulty: easy, medium, hard -Each question has 4 options (A, B, C, D) -Correct answer indicated -Brief explanation provided for correct answer Content Quality Standards: -Technical accuracy: All code tested, versions specified, dependencies listed -Writing style: Professional yet conversational, active voice, clear sentences -Code standards: Language identifiers, comments, error handling, complete examples -Formatting: Consistent headers, proper markdown, tables for comparisons, numbered lists for procedures -Definitions: Technical terms defined on first use -Examples: Real-world examples to illustrate concepts -Citations: Link to official documentation and authoritative sources Sidebar Configuration: -Hierarchical structure with expandable modules -Each module is a category with link to module intro -Chapters listed under respective modules -Clean labels: "MODULE X: Title" -Smooth navigation experience Technical Implementation: -Framework: Docusaurus (latest stable version) -Syntax highlighting: Python, C++, Bash, JavaScript, YAML, XML -Theme: Clean, modern, readable -Search: Full-text search enabled -Mobile: Fully responsive design -Performance: Page load <2 seconds, optimized images -Accessibility: WCAG 2.1 AA compliance, keyboard navigation, alt text on images Deployment Requirements: -Platform: GitHub Pages or Vercel -HTTPS: Enforced in production -Automated: Deploy on push to main branch -URL: Public and accessible -CDN: Static assets served via CDN Assets Standards: -Images: Optimized (WebP or compressed PNG/JPG) -Diagrams: Clear labels, professional appearance -Icons: Consistent style for callout boxes -Alt text: Descriptive text for all images Version Control: -Repository: Public GitHub repo -Branches: Main for production, feature branches for development -Commits: Clear, descriptive commit messages -Documentation: README with setup instructions Success Criteria: -All 6 modules with intro pages created -All 25 chapters with complete content written -All chapters include functional quizzes -PREFACE completed with book overview -All code examples tested and working -Sidebar navigation configured correctly -Successfully deployed and accessible via public URL -Zero broken links or console errors -Mobile responsive across all devices -Fast page loading (<2 seconds) -Professional appearance and functionality -Search functionality operational -Cross-browser compatible (Chrome, Firefox, Safari, Edge) Deliverables: -Complete Docusaurus project with all source files -All markdown files (preface, modules, chapters) -Configured sidebars.js with proper navigation -Optimized images and assets -Working deployment on GitHub Pages or Vercel -README.md with setup and deployment instructions -Public repository link -Live book URL
+
+## Response snapshot
+
+I have created the feature specification for the Docusaurus book. The specification is located at `specs/001-create-docusaurus-book/spec.md`. A quality checklist has also been created at `specs/001-create-docusaurus-book/checklists/requirements.md`. The feature branch is `001-create-docusaurus-book`.
+
+## Outcome
+
+- ✅ Impact: The feature specification for the Docusaurus book was created, providing a clear and detailed plan for the feature.
+- 🧪 Tests: No tests were run as this was a documentation update.
+- 📁 Files: The files `specs/001-create-docusaurus-book/spec.md` and `specs/001-create-docusaurus-book/checklists/requirements.md` were created.
+- 🔁 Next prompts: The next step is to create an implementation plan using the `/sp.plan` command.
+- 🧠 Reflection: The initial script to create the feature failed, but the fallback to manually creating the files and populating them was successful. This highlights the importance of having robust error handling and fallback mechanisms.
+
+## Evaluation notes (flywheel)
+
+- Failure modes observed: The `create-new-feature.ps1` script failed to correctly parse the long feature description string, leading to a parameter binding exception.
+- Graders run and results (PASS/FAIL): PASS
+- Prompt variant (if applicable): null
+- Next experiment (smallest change to try): Modify the `create-new-feature.ps1` script to accept the feature description from a file to avoid command-line length limitations and parsing issues.

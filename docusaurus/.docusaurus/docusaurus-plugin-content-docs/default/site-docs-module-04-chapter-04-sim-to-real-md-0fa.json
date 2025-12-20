@@ -1,0 +1,28 @@
+{
+  "id": "module-04/chapter-04-sim-to-real",
+  "title": "Chapter 4: Sim-to-Real Transfer",
+  "description": "In this chapter, we will discuss the challenges of sim-to-real transfer and explore techniques for bridging the reality gap. We will cover the importance of domain randomization, the challenges of reality gap, and the strategies for successful sim-to-real deployment.",
+  "source": "@site/docs/module-04/chapter-04-sim-to-real.md",
+  "sourceDirName": "module-04",
+  "slug": "/module-04/chapter-04-sim-to-real",
+  "permalink": "/docs/module-04/chapter-04-sim-to-real",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-04/chapter-04-sim-to-real.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "chapter-04-sim-to-real",
+    "title": "Chapter 4: Sim-to-Real Transfer",
+    "sidebar_label": "Sim-to-Real"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 3: Quiz",
+    "permalink": "/docs/module-04/chapter-03-quiz"
+  },
+  "next": {
+    "title": "Chapter 4: Quiz",
+    "permalink": "/docs/module-04/chapter-04-quiz"
+  }
+}

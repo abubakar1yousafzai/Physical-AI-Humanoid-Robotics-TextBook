@@ -1,55 +1,114 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: 0.1.0 -> 1.0.0
+- List of modified principles: All principles have been replaced.
+- Added sections: All sections have been replaced.
+- Removed sections: All sections have been replaced.
+- Templates requiring updates:
+  - ✅ .specify/templates/plan-template.md
+  - ✅ .specify/templates/spec-template.md
+  - ✅ .specify/templates/tasks-template.md
+- Follow-up TODOs: None
+-->
 
-## Core Principles
+# Constitution for Physical AI & Humanoid Robotics
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+| Version | Ratification Date | Last Amended Date |
+|---|---|---|
+| 1.0.0 | 2025-12-14 | 2025-12-14 |
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+## 1. Governance and Amendment
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+This constitution is the supreme governing document for the **Physical AI & Humanoid Robotics** project. It defines the core principles, standards, and constraints that guide our development.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+- **Amendment Process**: Amendments require team consensus.
+- **Versioning**: Changes follow Semantic Versioning (Major, Minor, Patch).
+- **Compliance**: All project activities must comply with this constitution.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+## 2. Core Principles
 
-### [PRINCIPLE_6_NAME]
+### Principle 1: Educational Excellence
+- **Rule**: Content must be technically accurate, pedagogically sound, and progressively structured from fundamentals to advanced concepts.
+- **Rationale**: To ensure the educational material is effective and provides a solid learning foundation.
 
+### Principle 2: Interactive Learning
+- **Rule**: Every chapter must include code examples, visual diagrams, practical exercises, and end-of-chapter quizzes (5-10 questions).
+- **Rationale**: To engage users and reinforce learning through hands-on experience.
 
-[PRINCIPLE__DESCRIPTION]
+### Principle 3: Phased Development
+- **Rule**: Phase 1 (Textbook) must be complete before Phase 2 (RAG Chatbot), then Phase 3 (Better-Auth), then Phase 4 (Bonus Features).
+- **Rationale**: To ensure a structured and incremental development process.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### Principle 4: Content Structure
+- **Rule**: Each chapter requires (1) Title & Overview with learning objectives, (2) Main content with examples, (3) Visual elements, (4) Interactive quiz, (5) Summary, (6) Additional resources.
+- **Rationale**: To maintain a consistent and organized structure across all content.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Principle 5: Technical Accuracy
+- **Rule**: All code examples must be tested and runnable, commands verified, and version numbers specified.
+- **Rationale**: To provide reliable and accurate technical information to the users.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### Principle 6: Accessibility
+- **Rule**: The platform must be mobile-responsive, use gender-neutral language, and culturally sensitive examples.
+- **Rationale**: To make the content accessible and inclusive for a diverse audience.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### Principle 7: Performance
+- **Rule**: The website must have fast loading times, no broken links, and be cross-browser compatible.
+- **Rationale**: To provide a smooth and professional user experience.
 
-## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+## 3. Key Standards
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- **Course Coverage**: The course is organized into 6 modules.
+- **Book Structure**:
+    - PREFACE: Welcome and book overview
+    - MODULE 1: Introduction to Physical AI (4 chapters)
+    - MODULE 2: ROS 2 Fundamentals (4 chapters)
+    - MODULE 3: Robot Simulation with Gazebo (4 chapters)
+    - MODULE 4: NVIDIA Isaac Platform (4 chapters)
+    - MODULE 5: Humanoid Robot Development (4 chapters)
+    - MODULE 6: Conversational Robotics (3 chapters)
+- **Module/Chapter Structure**: Each module has an introduction page. Each chapter is a separate page with detailed content and a quiz.
+- **File Structure**: Content is organized in a module-based structure within the `docs/` directory.
+- **Navigation**: A sidebar allows users to expand modules to see chapters.
+- **Code Standards**: All code must include syntax highlighting, comments, and installation instructions.
+- **Terminology**: Technical terms must be defined on their first use.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+## 4. Constraints
+
+- **Deployment**: The project will be deployed on GitHub Pages or Vercel.
+- **Quiz Format**: Quizzes will consist of 5-10 multiple-choice questions per chapter.
+- **Mobile Compatibility**: All features must be fully functional on mobile devices.
+- **Security**: HTTPS will be enforced, and the application will be protected against XSS/CSRF attacks with proper input validation.
+
+## 5. Phase Requirements
+
+### Phase 1 - Textbook
+- Complete PREFACE and all 6 module introduction pages.
+- All 25 chapters are fully documented with content and quizzes.
+- All code examples are tested and working.
+- Sidebar navigation is correctly configured.
+- The site is successfully deployed.
+
+### Phase 2 - RAG Chatbot
+- Built with FastAPI, OpenAI, Qdrant Cloud, and Neon Postgres.
+- Embedded in pages to answer questions about the textbook content.
+- Provides context-aware responses using RAG.
+- Works with user-selected text.
+
+### Phase 3 - Better-Auth
+- Secure signup/signin with email verification.
+- A user background questionnaire (7 questions).
+- User profiles with progress tracking.
+- JWT for session management.
+
+### Phase 4 - Bonus Features
+- Personalization button to adjust content based on user background.
+- Urdu translation button with RTL support.
+
+## 6. Success Criteria
+
+- PREFACE and all 6 modules are documented.
+- All chapters include quizzes.
+- The website has a professional appearance and functionality.
+- There are zero broken links or console errors.
+- The application is mobile-responsive across all devices.
+- The site is successfully deployed and accessible via a public URL.

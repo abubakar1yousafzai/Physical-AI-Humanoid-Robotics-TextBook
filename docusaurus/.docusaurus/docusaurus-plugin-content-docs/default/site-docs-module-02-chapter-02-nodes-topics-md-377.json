@@ -1,0 +1,26 @@
+{
+  "id": "module-02/chapter-02-nodes-topics",
+  "title": "Chapter 2: Nodes, Topics, Services, and Actions in Practice",
+  "description": "-   Learning Objectives:",
+  "source": "@site/docs/module-02/chapter-02-nodes-topics.md",
+  "sourceDirName": "module-02",
+  "slug": "/module-02/chapter-02-nodes-topics",
+  "permalink": "/docs/module-02/chapter-02-nodes-topics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-02/chapter-02-nodes-topics.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Chapter 2: Nodes, Topics, Services, and Actions in Practice"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 1: Quiz",
+    "permalink": "/docs/module-02/chapter-01-quiz"
+  },
+  "next": {
+    "title": "Chapter 2: Quiz",
+    "permalink": "/docs/module-02/chapter-02-quiz"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "module-05/chapter-03-manipulation-grasping",
+  "title": "Chapter 3: Manipulation and Grasping",
+  "description": "In this chapter, we will explore the intricate topic of manipulation and grasping with humanoid hands. After understanding how humanoids move and balance, we now turn our attention to how they interact physically with objects in their environment. This is a crucial aspect of humanoid robotics, enabling tasks from simple object retrieval to complex assembly.",
+  "source": "@site/docs/module-05/chapter-03-manipulation-grasping.md",
+  "sourceDirName": "module-05",
+  "slug": "/module-05/chapter-03-manipulation-grasping",
+  "permalink": "/docs/module-05/chapter-03-manipulation-grasping",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-05/chapter-03-manipulation-grasping.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "chapter-03-manipulation-grasping",
+    "title": "Chapter 3: Manipulation and Grasping",
+    "sidebar_label": "Manipulation & Grasping"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Quiz",
+    "permalink": "/docs/module-05/chapter-02-quiz"
+  },
+  "next": {
+    "title": "Quiz",
+    "permalink": "/docs/module-05/chapter-03-quiz"
+  }
+}

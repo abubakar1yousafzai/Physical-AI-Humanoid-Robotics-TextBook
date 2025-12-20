@@ -1,0 +1,28 @@
+{
+  "id": "module-04-intro",
+  "title": "Module 4: Introduction to the NVIDIA Isaac Platform",
+  "description": "Welcome to Module 4, where we will explore the powerful NVIDIA Isaac platform for GPU-accelerated robotics development. This module will introduce you to the core components of the Isaac ecosystem, including Isaac SDK and Isaac Sim, and demonstrate how they are revolutionizing the field of AI-powered robotics by providing an end-to-end solution for development, simulation, and deployment.",
+  "source": "@site/docs/module-04-intro.md",
+  "sourceDirName": ".",
+  "slug": "/module-04-intro",
+  "permalink": "/docs/module-04-intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-04-intro.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "module-04-intro",
+    "title": "Module 4: Introduction to the NVIDIA Isaac Platform",
+    "sidebar_label": "Introduction to Module 4"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 4: Quiz",
+    "permalink": "/docs/module-03/chapter-04-quiz"
+  },
+  "next": {
+    "title": "Isaac SDK & Sim",
+    "permalink": "/docs/module-04/chapter-01-isaac-sdk-sim"
+  }
+}
