@@ -88,11 +88,38 @@ This constitution is the supreme governing document for the **Physical AI & Huma
 - Sidebar navigation is correctly configured.
 - The site is successfully deployed.
 
-### Phase 2 - RAG Chatbot
-- Built with FastAPI, OpenAI, Qdrant Cloud, and Neon Postgres.
-- Embedded in pages to answer questions about the textbook content.
-- Provides context-aware responses using RAG.
-- Works with user-selected text.
+### Phase 2 - RAG Chatbot Integration
+
+**Technology Stack:**
+- **AI/LLM**: OpenAI Agents SDK (Assistants API)
+- **Backend**: FastAPI (Python)
+- **Database**: Neon Serverless Postgres (conversation history)
+- **Vector Database**: Qdrant Cloud Free Tier (textbook embeddings)
+- **Embeddings**: Cohere `embed-english-v3.0`
+- **Chat Interface**: React component in Docusaurus
+
+**Architecture:**
+1. **Indexing**: Book content → Cohere Embeddings → Qdrant DB
+2. **Query Flow**: User → FastAPI → Qdrant (retrieve) → OpenAI Agent → Response
+3. **History**: FastAPI → Neon Postgres (save conversations)
+
+**Key Features:**
+1. **General chatbot** for textbook questions.
+2. **Text selection-based queries**:
+   - User highlights text in chapter.
+   - Floating button appears near selection.
+   - Click to ask question about selected text.
+3. **Floating chat widget** (bottom-right corner, all pages).
+4. **Conversation history tracking** in Neon Postgres.
+5. **Anonymous chat** (without login) with limited history.
+6. **Context-aware responses** using RAG pipeline.
+
+**Technical Implementation:**
+- **Qdrant** stores all book content as vector embeddings.
+- **FastAPI** orchestrates: Frontend ↔ Qdrant ↔ OpenAI Agent ↔ Neon DB.
+- **Text selection**: `window.getSelection()` + floating button UI.
+- **Chat widget**: Minimizable popup (bottom-right).
+- **Session storage**: Browser (anonymous) or Neon DB (logged in).
 
 ### Phase 3 - Better-Auth
 - Secure signup/signin with email verification.
