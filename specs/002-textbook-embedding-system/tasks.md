@@ -14,20 +14,20 @@
 
 **Goal**: Establish the core project structure and shared utilities.
 
-- [ ] T004 Create `backend/main.py` skeleton with imports and main execution block
-- [ ] T005 Implement environment loading and validation in `backend/main.py`
-- [ ] T006 Implement shared logging configuration in `backend/main.py`
+- [x] T004 Create `backend/main.py` skeleton with imports and main execution block
+- [x] T005 Implement environment loading and validation in `backend/main.py`
+- [x] T006 Implement shared logging configuration in `backend/main.py`
 
 ## Phase 3: Content Ingestion and Embedding (User Story 1)
 
 **Goal**: Fetch, parse, chunk, and embed textbook content.
 **Independent Test**: Run `main.py` (partial) to verify chunks are generated and embeddings created for a single URL.
 
-- [ ] T007 [US1] Implement `get_all_urls(base_url)` in `backend/main.py` to parse sitemap
-- [ ] T008 [P] [US1] Implement `extract_text_from_url(url)` in `backend/main.py` using BeautifulSoup4
-- [ ] T009 [P] [US1] Implement `chunk_text(text)` in `backend/main.py` (1000 tokens, 100 overlap)
-- [ ] T010 [US1] Implement `embed(texts)` in `backend/main.py` using Cohere API
-- [ ] T011 [US1] Create integration test script `backend/test_ingestion.py` to verify fetching and chunking logic
+- [x] T007 [US1] Implement `get_all_urls(base_url)` in `backend/main.py` to parse sitemap
+- [x] T008 [P] [US1] Implement `extract_text_from_url(url)` in `backend/main.py` using BeautifulSoup4
+- [x] T009 [P] [US1] Implement `chunk_text(text)` in `backend/main.py` (1000 tokens, 100 overlap)
+- [x] T010 [US1] Implement `embed(texts)` in `backend/main.py` using Cohere API
+- [x] T011 [US1] Create integration test script `backend/test_ingestion.py` to verify fetching and chunking logic
 
 ## Phase 4: Vector Storage and Metadata (User Story 2)
 
