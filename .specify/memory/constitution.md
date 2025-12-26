@@ -91,7 +91,8 @@ This constitution is the supreme governing document for the **Physical AI & Huma
 ### Phase 2 - RAG Chatbot Integration
 
 **Technology Stack:**
-- **AI/LLM**: OpenAI Agents SDK (Assistants API)
+- **Agent Framework**: OpenAI Agents SDK (for agent architecture)
+- **LLM**: Google Gemini API (gemini-1.5-flash) - FREE tier
 - **Backend**: FastAPI (Python)
 - **Database**: Neon Serverless Postgres (conversation history)
 - **Vector Database**: Qdrant Cloud Free Tier (textbook embeddings)
