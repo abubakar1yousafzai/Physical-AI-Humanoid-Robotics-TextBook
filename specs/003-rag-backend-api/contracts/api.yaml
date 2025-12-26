@@ -1,0 +1,96 @@
+openapi: 3.0.3
+info:
+  title: RAG Chatbot Backend API
+  description: API for the Physical AI Textbook RAG Chatbot
+  version: 1.0.0
+paths:
+  /api/health:
+    get:
+      summary: Health Check
+      description: Returns the status of the API and its downstream dependencies.
+      responses:
+        '200':
+          description: System is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+  /api/chat:
+    post:
+      summary: Send Chat Message
+      description: Sends a message to the RAG agent and receives an augmented response.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+        '400':
+          description: Bad Request (Invalid input)
+        '429':
+          description: Too Many Requests (Rate limit exceeded)
+        '503':
+          description: Service Unavailable (Downstream dependency failure)
+components:
+  schemas:
+    ChatRequest:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          minLength: 1
+          description: The user's query
+        thread_id:
+          type: string
+          format: uuid
+          nullable: true
+          description: Optional thread ID for continuing conversations
+    ChatResponse:
+      type: object
+      required:
+        - answer
+        - thread_id
+      properties:
+        answer:
+          type: string
+          description: The LLM generated response
+        sources:
+          type: array
+          items:
+            type: string
+          description: List of source excerpts used
+        thread_id:
+          type: string
+          format: uuid
+          description: The conversation ID
+    HealthResponse:
+      type: object
+      required:
+        - status
+        - services
+      properties:
+        status:
+          type: string
+          example: healthy
+        services:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            qdrant: connected
+            gemini: connected
