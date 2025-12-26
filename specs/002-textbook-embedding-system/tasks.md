@@ -34,25 +34,25 @@
 **Goal**: Store generated embeddings with rich metadata in Qdrant.
 **Independent Test**: Verify vectors are stored in Qdrant Cloud with correct payload fields.
 
-- [ ] T012 [US2] Implement `create_collection()` in `backend/main.py` for Qdrant setup (size 1024, Cosine)
-- [ ] T013 [US2] Implement `save_chunk_to_qdrant(...)` in `backend/main.py` mapping metadata to payload
-- [ ] T014 [US2] Update `main()` loop in `backend/main.py` to orchestrate full pipeline (Fetch -> Chunk -> Embed -> Save)
-- [ ] T015 [US2] Add rate limiting/backoff logic to `save_chunk_to_qdrant` in `backend/main.py`
+- [x] T012 [US2] Implement `create_collection()` in `backend/main.py` for Qdrant setup (size 1024, Cosine)
+- [x] T013 [US2] Implement `save_chunk_to_qdrant(...)` in `backend/main.py` mapping metadata to payload
+- [x] T014 [US2] Update `main()` loop in `backend/main.py` to orchestrate full pipeline (Fetch -> Chunk -> Embed -> Save)
+- [x] T015 [US2] Add rate limiting/backoff logic to `save_chunk_to_qdrant` in `backend/main.py`
 
 ## Phase 5: Verification and Retrieval (User Story 3)
 
 **Goal**: Verify system end-to-end and test retrieval.
 **Independent Test**: Run verification script and confirm relevant results for sample queries.
 
-- [ ] T016 [US3] Implement `verify_indexing()` function in `backend/main.py` to query Qdrant count
-- [ ] T017 [US3] Implement `test_retrieval(query)` in `backend/main.py` to print top-k matches
-- [ ] T018 [US3] Add command-line arguments to `backend/main.py` (e.g., `--verify`, `--run`) for mode selection
+- [x] T016 [US3] Implement `verify_indexing()` function in `backend/main.py` to query Qdrant count
+- [x] T017 [US3] Implement `test_retrieval(query)` in `backend/main.py` to print top-k matches
+- [x] T018 [US3] Add command-line arguments to `backend/main.py` (e.g., `--verify`, `--run`) for mode selection
 
 ## Phase 6: Polish & Documentation
 
-- [ ] T019 Create `backend/README.md` with setup and usage instructions
-- [ ] T020 Review and finalize error handling (network retries, empty pages) in `backend/main.py`
-- [ ] T021 Clean up temporary files or logs
+- [x] T019 Create `backend/README.md` with setup and usage instructions
+- [x] T020 Review and finalize error handling (network retries, empty pages) in `backend/main.py`
+- [x] T021 Clean up temporary files or logs
 
 ## Dependencies
 

@@ -3,6 +3,8 @@ import sys
 import logging
 from typing import List, Dict, Optional
 import time
+import uuid
+import argparse
 import requests
 from bs4 import BeautifulSoup
 import tiktoken
@@ -10,8 +12,11 @@ import tiktoken
 from dotenv import load_dotenv
 import cohere
 from qdrant_client import QdrantClient
+from qdrant_client.models import VectorParams, Distance, PointStruct
 
 # --- Configuration & Logging ---
+
+COLLECTION_NAME = "physical-ai-textbook"
 
 # Configure logging
 logging.basicConfig(
@@ -160,27 +165,147 @@ def embed(texts: List[str]) -> List[List[float]]:
 
 def create_collection():
     """Initializes the Qdrant collection if it doesn't exist."""
-    # TODO: Implement T012
-    pass
+    try:
+        if not qdrant_client.collection_exists(COLLECTION_NAME):
+            logger.info(f"Creating collection {COLLECTION_NAME}...")
+            qdrant_client.create_collection(
+                collection_name=COLLECTION_NAME,
+                vectors_config=VectorParams(size=1024, distance=Distance.COSINE)
+            )
+            logger.info(f"Collection {COLLECTION_NAME} created.")
+        else:
+            logger.info(f"Collection {COLLECTION_NAME} already exists.")
+    except Exception as e:
+        logger.error(f"Failed to create collection: {e}")
+        sys.exit(1)
 
 def save_chunk_to_qdrant(chunk_id: str, vector: List[float], payload: Dict):
-    """Saves a single chunk embedding and metadata to Qdrant."""
-    # TODO: Implement T013
-    pass
+    """Saves a single chunk embedding and metadata to Qdrant with retry logic."""
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            qdrant_client.upsert(
+                collection_name=COLLECTION_NAME,
+                points=[
+                    PointStruct(
+                        id=chunk_id,
+                        vector=vector,
+                        payload=payload
+                    )
+                ]
+            )
+            return
+        except Exception as e:
+            if attempt == max_retries - 1:
+                logger.error(f"Failed to save chunk {chunk_id} after {max_retries} attempts: {e}")
+                # Don't exit, just log failure for this chunk
+            else:
+                logger.warning(f"Error saving chunk {chunk_id}, retrying ({attempt + 1}/{max_retries})...")
+                time.sleep(2 ** attempt) # Exponential backoff
 
 def verify_indexing():
     """Verifies the number of vectors stored in Qdrant."""
-    # TODO: Implement T016
-    pass
+    try:
+        count = qdrant_client.count(collection_name=COLLECTION_NAME).count
+        logger.info(f"Total vectors in collection '{COLLECTION_NAME}': {count}")
+        return count
+    except Exception as e:
+        logger.error(f"Failed to verify indexing: {e}")
+        return 0
 
 def test_retrieval(query: str):
     """Tests retrieval with a sample query."""
-    # TODO: Implement T017
-    pass
+    try:
+        logger.info(f"Testing retrieval for query: '{query}'")
+        
+        # 1. Embed query
+        query_embedding = cohere_client.embed(
+            texts=[query],
+            model="embed-english-v3.0",
+            input_type="search_query"
+        ).embeddings[0]
+        
+        # 2. Search Qdrant
+        results = qdrant_client.query_points(
+            collection_name=COLLECTION_NAME,
+            query=query_embedding,
+            limit=5
+        ).points
+        
+        logger.info("Search Results:")
+        for res in results:
+            title = res.payload.get("title", "Unknown")
+            score = res.score
+            chunk_preview = res.payload.get("text", "")[:100] + "..."
+            logger.info(f"  - [{score:.4f}] {title}: {chunk_preview}")
+            
+    except Exception as e:
+        logger.error(f"Failed to test retrieval: {e}")
 
 # --- Main Execution ---
 
+def run_indexing():
+    """Runs the complete indexing pipeline."""
+    create_collection()
+    
+    base_url = os.getenv("DEPLOYED_BOOK_URL")
+    logger.info(f"Scanning {base_url}...")
+    urls = get_all_urls(base_url)
+    
+    if not urls:
+        logger.error("No URLs found to process. Exiting.")
+        return
+
+    total_chunks = 0
+    
+    for url in urls:
+        logger.info(f"Processing {url}...")
+        data = extract_text_from_url(url)
+        
+        if not data:
+            continue
+            
+        chunks = chunk_text(data['text'])
+        logger.info(f"  - Generated {len(chunks)} chunks.")
+        
+        if not chunks:
+            continue
+            
+        embeddings = embed(chunks)
+        
+        if not embeddings or len(embeddings) != len(chunks):
+            logger.error(f"  - Failed to generate embeddings for {url}")
+            continue
+            
+        for i, (chunk, embedding) in enumerate(zip(chunks, embeddings)):
+            chunk_id = str(uuid.uuid4())
+            payload = {
+                "module_id": data['module_id'],
+                "chapter_id": data['chapter_id'],
+                "title": data['title'],
+                "url": data['url'],
+                "content_type": data['content_type'],
+                "document_type": data['document_type'],
+                "chunk_index": i,
+                "text": chunk
+            }
+            
+            save_chunk_to_qdrant(chunk_id, embedding, payload)
+            total_chunks += 1
+            
+        # Polite delay between pages
+        time.sleep(0.5)
+
+    logger.info(f"Indexing complete. Total chunks processed: {total_chunks}")
+
 def main():
+    parser = argparse.ArgumentParser(description="Textbook Content Embedding System")
+    parser.add_argument("--run", action="store_true", help="Run full indexing pipeline")
+    parser.add_argument("--verify", action="store_true", help="Verify vector count in DB")
+    parser.add_argument("--test-query", type=str, help="Test retrieval with a specific query")
+    
+    args = parser.parse_args()
+    
     logger.info("Starting Textbook Embedding System...")
     load_environment()
     
@@ -194,7 +319,18 @@ def main():
     
     logger.info("Clients initialized.")
     
-    # TODO: Orchestrate pipeline (T014)
+    if args.run:
+        run_indexing()
+        
+    if args.verify:
+        verify_indexing()
+        
+    if args.test_query:
+        test_retrieval(args.test_query)
+        
+    if not (args.run or args.verify or args.test_query):
+        parser.print_help()
+        logger.info("No action specified. Use --run, --verify, or --test-query.")
 
 if __name__ == "__main__":
     main()
