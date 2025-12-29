@@ -1,66 +1,65 @@
-# RAG Chatbot Backend API
+# RAG Chatbot Backend
 
-FastAPI-based backend for the Physical AI and Humanoid Robotics Textbook assistant. It provides endpoints for RAG-augmented chat, health monitoring, and persistent conversation history.
+## Overview
+FastAPI backend with OpenAI Agents SDK + Google Gemini for RAG chatbot.
 
-## Features
-
-- **RAG Integration**: Uses Cohere for embeddings and Qdrant for vector search.
-- **LLM Reasoning**: Powered by Google Gemini (via OpenAI-compatible SDK).
-- **Persistent History**: Stores conversation threads in Neon Postgres (SQLAlchemy).
-- **Health Checks**: Real-time status monitoring of external dependencies.
-- **Rate Limiting**: Integrated middleware for API stability.
-
-## Prerequisites
-
-- Python 3.10+
-- `uv` package manager
-- API Keys for Gemini, Cohere, Qdrant, and a Postgres connection string.
+## Tech Stack
+- Backend: FastAPI
+- Agent: OpenAI Agents SDK
+- LLM: Google Gemini 1.5 Flash (FREE)
+- Embeddings: Cohere embed-english-v3.0
+- Vector DB: Qdrant Cloud
+- Database: Neon Postgres
+- Package Manager: UV
 
 ## Setup
 
-1.  **Install dependencies**:
-    ```bash
-    cd backend
-    uv sync
-    ```
-
-2.  **Configure Environment**:
-    Copy `.env.example` to `.env` and fill in the required variables:
-    ```bash
-    GEMINI_API_KEY=...
-    COHERE_API_KEY=...
-    QDRANT_URL=...
-    QDRANT_API_KEY=...
-    DATABASE_URL=postgresql+asyncpg://...
-    ```
-
-3.  **Run Migrations**:
-    ```bash
-    uv run alembic upgrade head
-    ```
-
-## Usage
-
-### Running the API Server
+### 1. Install Dependencies
 ```bash
-uv run uvicorn app.main:app --reload
+uv pip install fastapi uvicorn openai-agents cohere qdrant-client pydantic-settings python-dotenv httpx sqlalchemy asyncpg alembic
 ```
 
-### Endpoints
-- `GET /api/health`: Check service and dependency status.
-- `POST /api/chat`: Send a question and get a RAG-augmented response.
-  - Optional `thread_id` to continue a conversation.
-
-### Textbook Ingestion (CLI)
-To (re)index textbook content into Qdrant:
-```bash
-uv run python main.py --run
+### 2. Configure Environment
+Create `.env`:
+```ini
+GEMINI_API_KEY=your_key
+COHERE_API_KEY=your_key
+QDRANT_URL=your_url
+QDRANT_API_KEY=your_key
+DATABASE_URL=postgresql://...
 ```
 
-## Architecture
+### 3. Run Migrations
+```bash
+uv run alembic upgrade head
+```
 
-- **`app/api/`**: API routes and middleware.
-- **`app/services/`**: Core logic (RAG, Gemini, Qdrant).
-- **`app/models/`**: Pydantic and SQLAlchemy models.
-- **`app/crud/`**: Database operations.
-- **`alembic/`**: Database migration scripts.
+### 4. Start Server
+```bash
+uvicorn app.main:app --reload
+```
+
+Server runs at: http://localhost:8000
+
+## API Endpoints
+
+### Health Check
+```
+GET /api/health
+```
+
+### Chat
+```
+POST /api/chat
+Body: {
+  "message": "What is Physical AI?",
+  "thread_id": null
+}
+```
+
+## Features
+- ✅ RAG pipeline (Cohere + Qdrant + Gemini)
+- ✅ Conversation persistence (Neon Postgres)
+- ✅ Thread continuity
+- ✅ Source citations
+- ✅ Rate limiting (15 RPM)
