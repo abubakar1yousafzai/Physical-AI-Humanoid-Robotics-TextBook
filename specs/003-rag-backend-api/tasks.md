@@ -1,8 +1,8 @@
 # Tasks: RAG Chatbot Backend API
 
 **Feature**: RAG Chatbot Backend API
-**Status**: Planning
-**Phase**: 1 (Setup)
+**Status**: Implementation
+**Phase**: Final (Polish)
 
 ## Implementation Strategy
 
@@ -62,18 +62,18 @@ We will follow a phased approach strictly adhering to the "Core RAG First" strat
 **Goal**: Persist conversation history in Neon Postgres.
 **Independent Test**: Send message with `thread_id`, verify retrieval on subsequent requests.
 
-- [ ] T019 [US3] Add database dependencies (sqlalchemy, asyncpg, alembic) to `backend/pyproject.toml`
-- [ ] T020 [US3] Configure database connection/session in `backend/app/db/session.py`
-- [ ] T021 [P] [US3] Define Conversation and Message SQLAlchemy models in `backend/app/models/sql.py`
-- [ ] T022 [US3] Initialize Alembic and generate initial migration in `backend/alembic/`
-- [ ] T023 [US3] Implement CRUD for history (create_thread, add_message, get_history) in `backend/app/crud/chat.py`
-- [ ] T024 [US3] Update `process_chat` in `backend/app/services/rag.py` to save interactions
-- [ ] T025 [US3] Update chat endpoint to accept/return `thread_id` and load history context
+- [x] T019 [US3] Add database dependencies (sqlalchemy, asyncpg, alembic) to `backend/pyproject.toml`
+- [x] T020 [US3] Configure database connection/session in `backend/app/db/session.py`
+- [x] T021 [P] [US3] Define Conversation and Message SQLAlchemy models in `backend/app/models/sql.py`
+- [x] T022 [US3] Initialize Alembic and generate initial migration in `backend/alembic/`
+- [x] T023 [US3] Implement CRUD for history (create_thread, add_message, get_history) in `backend/app/crud/chat.py`
+- [x] T024 [US3] Update `process_chat` in `backend/app/services/rag.py` to save interactions
+- [x] T025 [US3] Update chat endpoint to accept/return `thread_id` and load history context
 
 ## Final Phase: Polish
 
 **Goal**: Ensure code quality and documentation.
 
-- [ ] T026 Update `backend/README.md` with setup and usage instructions
-- [ ] T027 Run linter (ruff) and fix any style issues
-- [ ] T028 Verify all endpoints with final manual test pass
+- [x] T026 Update `backend/README.md` with setup and usage instructions
+- [x] T027 Run linter (ruff) and fix any style issues
+- [x] T028 Verify all endpoints with final manual test pass

@@ -1,50 +1,66 @@
-# Textbook Content Embedding System
+# RAG Chatbot Backend API
 
-This backend script is responsible for scraping the deployed Docusaurus textbook, chunking the content, generating embeddings with Cohere, and storing them in a Qdrant vector database.
+FastAPI-based backend for the Physical AI and Humanoid Robotics Textbook assistant. It provides endpoints for RAG-augmented chat, health monitoring, and persistent conversation history.
+
+## Features
+
+- **RAG Integration**: Uses Cohere for embeddings and Qdrant for vector search.
+- **LLM Reasoning**: Powered by Google Gemini (via OpenAI-compatible SDK).
+- **Persistent History**: Stores conversation threads in Neon Postgres (SQLAlchemy).
+- **Health Checks**: Real-time status monitoring of external dependencies.
+- **Rate Limiting**: Integrated middleware for API stability.
 
 ## Prerequisites
 
 - Python 3.10+
 - `uv` package manager
-- API Keys for Cohere and Qdrant
+- API Keys for Gemini, Cohere, Qdrant, and a Postgres connection string.
 
 ## Setup
 
-1.  **Navigate to this directory**:
+1.  **Install dependencies**:
     ```bash
     cd backend
-    ```
-
-2.  **Install dependencies**:
-    ```bash
     uv sync
     ```
 
-3.  **Configure Environment**:
-    Create a `.env` file by copying `.env.example` and filling in your API keys.
+2.  **Configure Environment**:
+    Copy `.env.example` to `.env` and fill in the required variables:
+    ```bash
+    GEMINI_API_KEY=...
+    COHERE_API_KEY=...
+    QDRANT_URL=...
+    QDRANT_API_KEY=...
+    DATABASE_URL=postgresql+asyncpg://...
+    ```
+
+3.  **Run Migrations**:
+    ```bash
+    uv run alembic upgrade head
+    ```
 
 ## Usage
 
-The script is controlled via command-line arguments.
+### Running the API Server
+```bash
+uv run uvicorn app.main:app --reload
+```
 
-- **Run the full indexing pipeline**:
-  This will scrape, chunk, embed, and upload all content.
-  ```bash
-  uv run python main.py --run
-  ```
+### Endpoints
+- `GET /api/health`: Check service and dependency status.
+- `POST /api/chat`: Send a question and get a RAG-augmented response.
+  - Optional `thread_id` to continue a conversation.
 
-- **Verify the number of vectors in the database**:
-  ```bash
-  uv run python main.py --verify
-  ```
-
-- **Test retrieval with a sample query**:
-  ```bash
-  uv run python main.py --test-query "What is physical AI?"
-  ```
+### Textbook Ingestion (CLI)
+To (re)index textbook content into Qdrant:
+```bash
+uv run python main.py --run
+```
 
 ## Architecture
 
-- **`main.py`**: The core script orchestrating the entire pipeline.
-- **`.env`**: Stores API keys and configuration secrets.
-- **`pyproject.toml` / `uv.lock`**: Manages Python dependencies.
+- **`app/api/`**: API routes and middleware.
+- **`app/services/`**: Core logic (RAG, Gemini, Qdrant).
+- **`app/models/`**: Pydantic and SQLAlchemy models.
+- **`app/crud/`**: Database operations.
+- **`alembic/`**: Database migration scripts.
