@@ -10,6 +10,9 @@ class Settings(BaseSettings):
     COHERE_API_KEY: str
     QDRANT_URL: str
     QDRANT_API_KEY: Optional[str] = None
+
+    # Database
+    DATABASE_URL: str
     
     model_config = SettingsConfigDict(
         env_file=".env",
