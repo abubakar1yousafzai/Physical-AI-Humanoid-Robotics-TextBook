@@ -49,13 +49,13 @@ We will follow a phased approach strictly adhering to the "Core RAG First" strat
 **Goal**: Enable users to ask questions and receive RAG-augmented answers.
 **Independent Test**: `POST /api/chat` returns relevant answer with sources.
 
-- [ ] T012 [P] [US1] Define ChatRequest and ChatResponse models in `backend/app/models/api.py`
-- [ ] T013 [P] [US1] Implement retrieval logic (Embed -> Search) in `backend/app/services/rag.py`
-- [ ] T014 [US1] Implement generation logic (Context + Query -> Gemini) in `backend/app/services/rag.py`
-- [ ] T015 [US1] Combine retrieval and generation into `process_chat` function in `backend/app/services/rag.py`
-- [ ] T016 [US1] Create chat endpoint in `backend/app/api/routes/chat.py`
-- [ ] T017 [US1] Register chat router in `backend/app/main.py`
-- [ ] T018 [US1] Add basic rate limiting (15 RPM for Gemini) in `backend/app/api/middleware.py` (or dependency)
+- [x] T012 [P] [US1] Define ChatRequest and ChatResponse models in `backend/app/models/api.py`
+- [x] T013 [P] [US1] Implement retrieval logic (Embed -> Search) in `backend/app/services/rag.py`
+- [x] T014 [US1] Implement generation logic (Context + Query -> Gemini) in `backend/app/services/rag.py`
+- [x] T015 [US1] Combine retrieval and generation into `process_chat` function in `backend/app/services/rag.py`
+- [x] T016 [US1] Create chat endpoint in `backend/app/api/routes/chat.py`
+- [x] T017 [US1] Register chat router in `backend/app/main.py`
+- [x] T018 [US1] Add basic rate limiting (15 RPM for Gemini) in `backend/app/api/middleware.py` (or dependency)
 
 ## Phase 5: User Story 3 - Persistent Chat History (P2)
 
