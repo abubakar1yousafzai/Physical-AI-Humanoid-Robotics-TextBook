@@ -9,7 +9,7 @@ router = APIRouter()
 
 @router.post("/chat", response_model=ChatResponse, dependencies=[Depends(rate_limiter)])
 async def chat_endpoint(
-    request: ChatRequest, 
+    request: ChatRequest,
     db: AsyncSession = Depends(get_db)
 ):
     return await process_chat(request, db)
