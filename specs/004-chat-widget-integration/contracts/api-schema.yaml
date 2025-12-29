@@ -1,0 +1,58 @@
+openapi: 3.0.0
+info:
+  title: Chat API
+  version: 1.0.0
+paths:
+  /api/chat:
+    post:
+      summary: Send a message to the RAG chatbot
+      operationId: sendMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+                  description: The user's query.
+                thread_id:
+                  type: string
+                  description: Optional UUID for continuing a conversation.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  answer:
+                    type: string
+                    description: The AI generated response.
+                  thread_id:
+                    type: string
+                    description: The conversation ID (returned for persistence).
+                  sources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        url:
+                          type: string
+                        snippet:
+                          type: string
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
