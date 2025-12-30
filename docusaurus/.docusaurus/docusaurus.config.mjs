@@ -6,7 +6,6 @@
 export default {
   "title": "Physical AI & Humanoid Robotics",
   "tagline": "Master the Future of Robotics and Embodied Intelligence",
-  "favicon": "img/favicon.ico",
   "future": {
     "v4": {
       "removeLegacyPostBuildHeadAttribute": true,
@@ -28,7 +27,7 @@ export default {
     },
     "experimental_router": "browser"
   },
-  "url": "https://your-docusaurus-site.example.com",
+  "url": "https://textbook-physical-ai-humanoid-robotics.vercel.app",
   "baseUrl": "/",
   "organizationName": "facebook",
   "projectName": "docusaurus",
@@ -57,7 +56,6 @@ export default {
     ]
   ],
   "themeConfig": {
-    "image": "img/docusaurus-social-card.jpg",
     "colorMode": {
       "respectPrefersColorScheme": true,
       "defaultMode": "light",
