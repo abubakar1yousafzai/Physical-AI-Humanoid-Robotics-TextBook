@@ -38,7 +38,7 @@ An interactive educational platform with AI-powered RAG chatbot for learning Phy
 └────────┬────────┘
          │
     ┌────▼─────┐
-    │ Docusaurus│ (React Frontend)
+    │ Docusaurus│ (Java Script Frontend)
     │ + Chat    │
     │  Widget   │
     └────┬─────┘
@@ -64,7 +64,7 @@ An interactive educational platform with AI-powered RAG chatbot for learning Phy
 ## 🚀 Tech Stack
 
 ### Frontend
-- **Framework:** Docusaurus 3.x (React-based)
+- **Framework:** Docusaurus 3.x (Java Script-based)
 - **Chat Widget:** React 18+ with Hooks
 - **Styling:** CSS with responsive design
 - **Storage:** localStorage for thread persistence
