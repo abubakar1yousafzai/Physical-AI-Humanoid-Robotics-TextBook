@@ -112,5 +112,5 @@ Use the context above to answer the user's question accurately. If the answer is
     return ChatResponse(
         answer=final_answer,
         sources=context_chunks,
-        thread_id=uuid.UUID(thread_id_str)
+        thread_id=thread_id_str  
     )

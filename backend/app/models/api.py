@@ -7,10 +7,11 @@ class HealthResponse(BaseModel):
     services: Dict[str, str]
 
 class ChatRequest(BaseModel):
-    message: str = Field(..., min_length=1, description="The user's natural language query")
-    thread_id: Optional[UUID] = Field(None, description="UUID for continuing a conversation (Phase 2)")
+    message: str
+    thread_id: Optional[str] = None
+    selected_text: Optional[str] = None
 
 class ChatResponse(BaseModel):
     answer: str = Field(..., description="The generated response from the LLM")
     sources: List[str] = Field(default_factory=list, description="List of source chunks used for context")
-    thread_id: Optional[UUID] = Field(None, description="The conversation ID")
+    thread_id: Optional[str] = Field(None, description="The conversation ID")
