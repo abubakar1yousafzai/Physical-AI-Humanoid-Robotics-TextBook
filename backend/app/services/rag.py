@@ -1,7 +1,6 @@
-import cohere
-import uuid
 import json
 from typing import List, Dict, Any, Optional
+from sentence_transformers import SentenceTransformer
 from sqlalchemy.ext.asyncio import AsyncSession
 from agents import Agent, Runner, AsyncOpenAI, OpenAIChatCompletionsModel
 from agents.run import RunConfig
@@ -10,17 +9,12 @@ from app.services.qdrant import QdrantService
 from app.models.api import ChatRequest, ChatResponse
 from app.crud import chat as chat_crud
 
-# Initialize Cohere client
-co = cohere.Client(settings.COHERE_API_KEY)
+# Initialize model at module level (loads once on startup)
+embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
 
 def get_embedding(text: str) -> List[float]:
-    """Generate vector embedding for a given text using Cohere"""
-    response = co.embed(
-        texts=[text],
-        model="embed-english-v3.0",
-        input_type="search_query"
-    )
-    return response.embeddings[0]
+    """Generate vector embedding using local model"""
+    return embedding_model.encode(text).tolist()
 
 def search_context(query: str, limit: int = 3) -> List[str]:
     """Retrieve relevant context chunks from Qdrant"""
