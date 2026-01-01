@@ -117,7 +117,7 @@ export default {
           ]
         }
       ],
-      "copyright": "Copyright © 2025 Physical AI & Humanoid Robotics."
+      "copyright": "Copyright © 2026 Physical AI & Humanoid Robotics."
     },
     "prism": {
       "theme": {
