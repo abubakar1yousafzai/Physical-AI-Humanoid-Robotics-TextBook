@@ -1,0 +1,49 @@
+---
+id: 001
+title: Specify Professional Landing Page UI
+stage: spec
+date: 2025-12-31
+surface: agent
+model: gemini
+feature: 008-professional-landing-page-ui
+branch: 008-professional-landing-page-ui
+user: unknown
+command: /sp.specify
+labels: ["spec", "ui", "docusaurus"]
+links:
+  spec: specs/008-professional-landing-page-ui/spec.md
+  ticket: null
+  adr: null
+  pr: null
+files:
+  - specs/008-professional-landing-page-ui/spec.md
+  - specs/008-professional-landing-page-ui/checklists/requirements.md
+tests:
+  - none
+---
+
+## Prompt
+
+# Spec-8: Professional Landing Page UI ## Overview Transform Docusaurus homepage into a professional, modern landing page with: - Neon light animations - Module cards with hover effects - Interactive features showcase - Glassmorphism design - Smooth scroll animations - Gradient backgrounds --- ## User Stories ### US1: Hero Section with Neon Effects (P1) **Given** user visits homepage **When** page loads **Then** see animated hero with neon glow title and CTA buttons ### US2: Interactive Module Cards (P1) **Given** user scrolls to modules section **When** hover over module card **Then** card lifts with neon border glow and content preview ### US3: Features Showcase (P2) **Given** user views features section **When** scroll into view **Then** features animate in with stagger effect ### US4: Chat Widget Integration (P1) **Given** professional landing page **When** user needs help **Then** chat widget matches new design theme --- ## Design Requirements ### Color Palette - Primary: Neon Cyan (#00fff2) - Secondary: Neon Purple (#bf00ff) - Accent: Neon Pink (#ff006e) - Background: Dark (#0a0a0f) - Glass: rgba(255, 255, 255, 0.05) ### Typography - Headings: Bold, gradient text - Body: Clean, readable - Code: Monospace with glow ### Components #### 1. Hero Section - Full viewport height - Animated gradient background - Neon glow title - Subtitle with typing effect - CTA buttons (Start Learning, View Modules) - Animated scroll indicator #### 2. Features Grid - 3-column grid (2 on tablet, 1 on mobile) - Icon with neon glow - Title and description - Hover: lift + border glow - Features: - 📚 Interactive Textbook - 🤖 AI Chat Assistant - 🎓 6 Complete Modules - 💾 Progress Tracking (future) - 🔍 Smart Search (future) - 📱 Mobile Responsive #### 3. Module Cards - Grid layout (3 columns) - Glassmorphism effect - Neon border on hover - Module icon/number - Title + chapter count - Preview text - "Start Module" button - Progress bar (future) #### 4. Stats Section - 4 animated counters - Stats: - 5 Modules - 15+ Chapters - 1000+ Concepts - AI-Powered Chat #### 5. CTA Section - Gradient background - Large heading - Button to start learning - Chat widget integration --- ## Success Criteria - SC-001: Hero loads with neon animations - SC-002: Module cards interactive and hover effects work - SC-003: Page fully responsive (mobile/tablet/desktop) - SC-004: Animations smooth (60fps) - SC-005: Accessibility maintained (keyboard nav, screen readers) - SC-006: Fast page load (<3s) --- ## Out of Scope - Backend changes - Content structure changes - New features (only UI redesign) - Authentication system - User accounts
+
+## Response snapshot
+
+I have created the branch `008-professional-landing-page-ui` and the corresponding specification files. The specification is ready for review.
+
+## Outcome
+
+- ✅ Impact: Created a new feature specification and all necessary scaffolding.
+- 🧪 Tests: No tests were run.
+- 📁 Files: 
+  - `specs/008-professional-landing-page-ui/spec.md`
+  - `specs/008-professional-landing-page-ui/checklists/requirements.md`
+  - `history/prompts/008-professional-landing-page-ui/001-specify-professional-landing-page-ui.spec.prompt.md`
+- 🔁 Next prompts: `/sp.plan`
+- 🧠 Reflection: The initial approach of using the provided script failed repeatedly. Bypassing the script and performing the steps manually was a more robust solution.
+
+## Evaluation notes (flywheel)
+
+- Failure modes observed: Script parameter binding issues.
+- Graders run and results (PASS/FAIL): n/a
+- Prompt variant (if applicable): n/a
+- Next experiment (smallest change to try): n/a
