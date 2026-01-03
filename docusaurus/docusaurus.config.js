@@ -99,13 +99,10 @@ const config = {
           {
             title: 'Community',
             items: [
+          
               {
-                label: 'Stack Overflow',
-                href: '',
-              },
-              {
-                label: 'Discord',
-                href: '',
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/in/abu-bakar-profile/',
               },
               {
                 label: 'X',
@@ -118,7 +115,20 @@ const config = {
             items: [
               {
                 label: 'GitHub',
+                href: 'https://github.com/abubakar1yousafzai',
+              },
+            ],
+          },
+          {
+            title: 'Project',
+            items: [
+              {
+                label: 'Source Code',
                 href: 'https://github.com/abubakar1yousafzai/Physical-AI-Humanoid-Robotics-TextBook',
+              },
+              {
+                label: 'Report Issue',
+                href: 'https://github.com/abubakar1yousafzai/Physical-AI-Humanoid-Robotics-TextBook/issues',
               },
             ],
           },

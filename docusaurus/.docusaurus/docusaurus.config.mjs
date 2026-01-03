@@ -71,7 +71,7 @@ export default {
           "label": "Book"
         },
         {
-          "href": "https://github.com/facebook/docusaurus",
+          "href": "https://github.com/abubakar1yousafzai/Physical-AI-Humanoid-Robotics-TextBook",
           "label": "GitHub",
           "position": "right"
         }
@@ -94,16 +94,12 @@ export default {
           "title": "Community",
           "items": [
             {
-              "label": "Stack Overflow",
-              "href": "https://stackoverflow.com/questions/tagged/docusaurus"
-            },
-            {
-              "label": "Discord",
-              "href": "https://discordapp.com/invite/docusaurus"
+              "label": "LinkedIn",
+              "href": "https://www.linkedin.com/in/abu-bakar-profile/"
             },
             {
               "label": "X",
-              "href": "https://x.com/docusaurus"
+              "href": "https://x.com/Abu_bakar_x"
             }
           ]
         },
@@ -112,7 +108,20 @@ export default {
           "items": [
             {
               "label": "GitHub",
-              "href": "https://github.com/facebook/docusaurus"
+              "href": "https://github.com/abubakar1yousafzai"
+            }
+          ]
+        },
+        {
+          "title": "Project",
+          "items": [
+            {
+              "label": "Source Code",
+              "href": "https://github.com/abubakar1yousafzai/Physical-AI-Humanoid-Robotics-TextBook"
+            },
+            {
+              "label": "Report Issue",
+              "href": "https://github.com/abubakar1yousafzai/Physical-AI-Humanoid-Robotics-TextBook/issues"
             }
           ]
         }
