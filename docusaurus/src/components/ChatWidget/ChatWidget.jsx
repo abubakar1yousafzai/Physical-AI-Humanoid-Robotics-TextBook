@@ -3,6 +3,8 @@ import ChatInput from './ChatInput';
 import ChatMessage from './ChatMessage';
 import TextSelectionPopup from './TextSelectionPopup';
 import HistoryPanel from './HistoryPanel';
+import { useAuth } from '@site/src/contexts/AuthContext';
+import authService from '@site/src/services/authService';
 import './ChatWidget.css';
 
 // --- LocalStorage Helpers ---
@@ -59,6 +61,7 @@ const loadThreadMessages = (threadId) => {
 };
 
 const ChatWidget = () => {
+  const { isAuthenticated, user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   // Default welcome message shouldn't persist as "saved" until user interacts? 
   // actually, let's keep it simple. If we load a thread, we use those messages. 
@@ -77,18 +80,41 @@ const ChatWidget = () => {
 
   // Load history list on mount
   useEffect(() => {
-    setConversations(loadConversations());
+    const fetchHistory = async () => {
+      if (isAuthenticated) {
+        try {
+          const response = await fetch('http://localhost:8000/api/chat/history', {
+            headers: {
+              'Authorization': `Bearer ${authService.getToken()}`
+            }
+          });
+          if (response.ok) {
+            const serverHistory = await response.json();
+            // Merge with local? Or just replace for MVP. Let's just use server if auth.
+            setConversations(serverHistory);
+            return;
+          }
+        } catch (err) {
+          console.error('Failed to fetch server history:', err);
+        }
+      }
+      setConversations(loadConversations());
+    };
+
+    fetchHistory();
     
     // Check for active thread in LS (optional, maybe we want to start fresh or restore last)
     const savedThreadId = localStorage.getItem('chat_thread_id');
     if (savedThreadId) {
+      // For authenticated user, messages might not be in LS anymore if cleared.
+      // But for MVP, let's try to load from LS first.
       const savedMessages = loadThreadMessages(savedThreadId);
       if (savedMessages) {
         setThreadId(savedThreadId);
         setMessages(savedMessages);
       }
     }
-  }, []);
+  }, [isAuthenticated]);
 
   // Save active thread ID
   useEffect(() => {
@@ -190,12 +216,18 @@ const ChatWidget = () => {
     const updatedHistory = saveToHistory(currentThreadId, updatedMessages);
     if (updatedHistory) setConversations(updatedHistory);
 
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+    const token = authService.getToken();
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
     try {
       const response = await fetch('http://localhost:8000/api/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: headers,
         body: JSON.stringify({
           message: text,
           thread_id: currentThreadId,
@@ -284,6 +316,11 @@ const ChatWidget = () => {
             {messages.map(msg => (
               <ChatMessage key={msg.id} message={msg} />
             ))}
+            {!isAuthenticated && messages.length > 2 && (
+              <div className="guest-prompt">
+                💡 <a href="/signup">Sign up</a> to save your chat history across devices!
+              </div>
+            )}
             {loading && (
               <div className="chat-message assistant-message">
                 <span className="typing-indicator">Thinking...</span>

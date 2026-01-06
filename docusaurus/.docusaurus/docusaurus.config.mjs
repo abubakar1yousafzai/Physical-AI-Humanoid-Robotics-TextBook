@@ -74,6 +74,10 @@ export default {
           "href": "https://github.com/abubakar1yousafzai/Physical-AI-Humanoid-Robotics-TextBook",
           "label": "GitHub",
           "position": "right"
+        },
+        {
+          "type": "custom-userMenu",
+          "position": "right"
         }
       ],
       "hideOnScroll": false
