@@ -37,7 +37,7 @@ User Browser → Docusaurus Frontend → FastAPI Backend
 ### Frontend
 - **Docusaurus 3.9** - Static site generator
 - **Custom Theme** - Neon colors with glassmorphism
-- **Chat Widget** - Pure JavaScript (no React library)
+- **Chat Widget** - JavaScript 
 - **Auth Pages** - Login, signup, dashboard, profile
 - **Deployment** - Vercel with auto-deploy
 
