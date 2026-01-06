@@ -1,62 +1,33 @@
 # Physical AI & Humanoid Robotics Textbook
 
-An interactive educational platform with AI-powered RAG chatbot for learning Physical AI and Humanoid Robotics.
+Interactive educational platform with AI-powered chat, user authentication, and personalized learning for Physical AI and Humanoid Robotics.
 
-[![Vercel](https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel)](https://textbook-physical-ai-humanoid-robotics.vercel.app/)
-[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?logo=fastapi)](http://localhost:8000/docs)
-[![React](https://img.shields.io/badge/Frontend-React-61DAFB?logo=react)](http://localhost:3000)
+[![Live Demo](https://img.shields.io/badge/Demo-Vercel-black?logo=vercel)](https://textbook-physical-ai-humanoid-robotics.vercel.app/)
+[![Backend](https://img.shields.io/badge/API-Hugging%20Face-FFD21E?logo=huggingface)](https://abu-bakar1yousafzai-deploy-backend.hf.space/docs)
 
 ---
 
 ## 🌟 Features
 
-### 📚 Interactive Textbook
-- **5 Modules** covering Physical AI fundamentals to advanced topics
-- **15+ Chapters** with detailed content
-- Built with **Docusaurus** for excellent reading experience
-- Deployed on **Vercel** for fast global access
-
-### 🤖 AI-Powered Chat Assistant
-- **RAG (Retrieval-Augmented Generation)** system
-- **Real-time responses** using Google Gemini 2.5 Flash (FREE)
-- **Source citations** from textbook content
-- **Conversation history** with thread persistence
-- **Mobile responsive** design
-
-### 🔍 Advanced RAG Pipeline
-- **93 textbook chunks** indexed in Qdrant vector database
-- **Cohere embeddings** for semantic search
-- **OpenAI Agents SDK** for intelligent orchestration
-- **Neon Postgres** for conversation persistence
+- **23 Chapters** across 6 modules on Physical AI and Humanoid Robotics
+- **AI Chat Assistant** with RAG (Retrieval-Augmented Generation)
+- **User Authentication** - signup, login, protected routes
+- **Chat History** - saved per user with thread management
+- **Text Selection** - select text and ask AI about it
+- **Neon Theme UI** - modern glassmorphism design
+- **Fully Deployed** - Frontend on Vercel, Backend on Hugging Face
+- **100% FREE** - All services on free tiers
 
 ---
 
 ## 🏗️ Architecture
 ```
-┌─────────────────┐
-│   User Browser  │
-└────────┬────────┘
-         │
-    ┌────▼─────┐
-    │ Docusaurus│ (Java Script Frontend)
-    │ + Chat    │
-    │  Widget   │
-    └────┬─────┘
-         │ HTTP/Fetch
-    ┌────▼─────┐
-    │  FastAPI │ (Backend API)
-    │  + CORS  │
-    └────┬─────┘
-         │
-    ┌────▼─────────────────┐
-    │ OpenAI Agents SDK    │
-    │ + Google Gemini 2.5  │
-    └────┬─────────────────┘
-         │
-    ┌────▼─────┬──────────┬──────────┐
-    │  Cohere  │  Qdrant  │   Neon   │
-    │ Embeddings│ Vector DB│ Postgres │
-    └──────────┴──────────┴──────────┘
+User Browser → Docusaurus Frontend → FastAPI Backend
+                                    ↓
+                    ┌───────────────┼───────────────┐
+                    ↓               ↓               ↓
+              Gemini 2.0      Qdrant Vector   Neon Postgres
+              (LLM, FREE)     (Embeddings)    (Users + Chats)
 ```
 
 ---
@@ -64,329 +35,272 @@ An interactive educational platform with AI-powered RAG chatbot for learning Phy
 ## 🚀 Tech Stack
 
 ### Frontend
-- **Framework:** Docusaurus 3.x (Java Script-based)
-- **Chat Widget:** React 18+ with Hooks
-- **Styling:** CSS with responsive design
-- **Storage:** localStorage for thread persistence
+- **Docusaurus 3.9** - Static site generator
+- **Custom Theme** - Neon colors with glassmorphism
+- **Chat Widget** - Pure JavaScript (no React library)
+- **Auth Pages** - Login, signup, dashboard, profile
+- **Deployment** - Vercel with auto-deploy
 
 ### Backend
-- **Framework:** FastAPI (Python)
-- **Agent:** OpenAI Agents SDK
-- **LLM:** Google Gemini 2.5 Flash (FREE tier)
-- **Embeddings:** Cohere embed-english-v3.0
-- **Vector DB:** Qdrant Cloud (1GB free)
-- **Database:** Neon Serverless Postgres (0.5GB free)
-- **Package Manager:** UV
-
-### Integration
-- **API:** RESTful with CORS
-- **Real-time:** Async/await throughout
-- **Error Handling:** Comprehensive try-catch
-- **Rate Limiting:** 15 RPM (Gemini limit)
+- **FastAPI** - Python async web framework
+- **FastAPI-Users** - Authentication with JWT
+- **Sentence Transformers** - Local embeddings (FREE)
+- **Google Gemini 2.0 Flash** - LLM (FREE, 15 RPM)
+- **Qdrant Cloud** - Vector database (1GB free)
+- **Neon Postgres** - Database (0.5GB free)
+- **Deployment** - Hugging Face Spaces (Docker, FREE)
 
 ---
 
 ## 📦 Installation
 
 ### Prerequisites
-- Node.js 18+ (for frontend)
-- Python 3.10+ (for backend)
-- UV package manager (for Python)
+- Node.js 18+
+- Python 3.11+
+- UV package manager
 
-### 1. Clone Repository
+### 1. Clone
 ```bash
 git clone https://github.com/abubakar1yousafzai/Physical-AI-Humanoid-Robotics-TextBook.git
 cd Physical-AI-Humanoid-Robotics-TextBook
 ```
 
-### 2. Frontend Setup
+### 2. Frontend
 ```bash
 cd docusaurus
 npm install
-npm start
-# Opens http://localhost:3000
+npm start  # http://localhost:3000
 ```
 
-### 3. Backend Setup
+### 3. Backend
 ```bash
 cd backend
+uv pip install -r requirements.txt
 
-# Install dependencies
-uv pip install fastapi uvicorn openai-agents cohere qdrant-client pydantic-settings python-dotenv httpx sqlalchemy asyncpg alembic
-
-# Configure environment variables
+# Setup .env
 cp .env.example .env
-# Edit .env with your API keys:
-# - GEMINI_API_KEY (from Google AI Studio)
-# - COHERE_API_KEY (from Cohere)
-# - QDRANT_URL & QDRANT_API_KEY (from Qdrant Cloud)
-# - DATABASE_URL (from Neon)
+# Add: GEMINI_API_KEY, QDRANT_URL, QDRANT_API_KEY, DATABASE_URL, SECRET_KEY
 
-# Run migrations
+# Migrations
 uv run alembic upgrade head
 
-# Start server
-uvicorn app.main:app --reload
-# Runs on http://localhost:8000
+# Start
+uv run uvicorn app.main:app --reload  # http://localhost:8000
 ```
 
 ---
 
 ## 🎯 Usage
 
-### Using the Chat Widget
+### Create Account
+1. Visit https://textbook-physical-ai-humanoid-robotics.vercel.app/
+2. Click **Sign Up**
+3. Enter name, email, password (min 8 chars)
+4. Redirected to dashboard
 
-1. **Open the textbook** at http://localhost:3000
-2. **Click the 💬 button** in the bottom-right corner
-3. **Type your question** about Physical AI or robotics
-4. **Press Enter** or click Send
-5. **View the AI response** with source citations
-6. **Expand sources** to see textbook references
+### Chat with AI
+1. Click **💬** button (bottom-right)
+2. Type question: *"What is Physical AI?"*
+3. View response with textbook sources
+4. History auto-saves (if logged in)
 
-### Example Questions
-```
-- What is Physical AI?
-- Explain embodied intelligence
-- What is ROS 2?
-- How does bipedal locomotion work?
-- Tell me about NVIDIA Isaac Sim
-```
+### Text Selection
+1. Select any text on a chapter
+2. Click **"Ask AI"** popup
+3. Ask questions about selected content
 
-### API Endpoints
+---
 
-**Health Check:**
+## 🔌 API Endpoints
+
+**Base URL:** `https://abu-bakar1yousafzai-deploy-backend.hf.space`
 ```bash
-curl http://localhost:8000/api/health
-```
+# Health
+GET /api/health
 
-**Chat:**
-```bash
-curl -X POST http://localhost:8000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message": "What is Physical AI?", "thread_id": null}'
-```
+# Auth
+POST /api/auth/register
+POST /api/auth/jwt/login
+GET /api/users/me  # Requires: Authorization: Bearer <token>
 
-**API Documentation:** http://localhost:8000/docs
+# Chat
+POST /api/chat
+GET /api/chat/history  # Requires auth
+
+# Docs
+GET /docs  # Swagger UI
+```
 
 ---
 
 ## 📊 Project Structure
 ```
-Physical-AI-Humanoid-Robotics-TextBook/
-├── docusaurus/                 # Frontend (Textbook + Chat)
-│   ├── docs/                   # Textbook content
+├── Dockerfile                    # Hugging Face deployment
+├── README.md
+│
+├── docusaurus/                   # Frontend
+│   ├── docs/                     # 23 chapters
 │   ├── src/
-│   │   └── components/
-│   │       └── ChatWidget/     # Chat widget component
+│   │   ├── components/
+│   │   │   ├── ChatWidget/       # Chat component
+│   │   │   └── UserMenu.jsx
+│   │   ├── contexts/
+│   │   │   └── AuthContext.jsx   # Auth state
+│   │   ├── services/
+│   │   │   └── authService.js    # API calls
+│   │   ├── pages/
+│   │   │   ├── index.js          # Landing (neon theme)
+│   │   │   ├── login.js
+│   │   │   ├── signup.js
+│   │   │   ├── dashboard.js
+│   │   │   └── profile.js
+│   │   └── css/
+│   │       └── custom.css        # Neon theme
 │   └── docusaurus.config.js
 │
-├── backend/                    # Backend API
-│   ├── app/
-│   │   ├── api/routes/         # API endpoints
-│   │   ├── core/               # Configuration
-│   │   ├── crud/               # Database operations
-│   │   ├── db/                 # Database connection
-│   │   ├── models/             # Pydantic & SQLAlchemy models
-│   │   └── services/           # RAG logic, clients
-│   ├── alembic/                # Database migrations
-│   └── main.py                 # Main indexing script
-│
-└── specs/                      # Specifications (Spec-Kit Plus)
-    ├── 001-textbook-deployment/
-    ├── 002-rag-indexing/
-    ├── 003-rag-backend-api/
-    └── 004-chat-widget-integration/
+└── backend/                      # Backend API
+    ├── app/
+    │   ├── api/routes/           # Auth, chat, users
+    │   ├── core/                 # Config, auth setup
+    │   ├── models/               # User, conversation
+    │   ├── services/
+    │   │   └── rag.py            # RAG logic
+    │   └── main.py
+    ├── alembic/                  # Migrations
+    └── requirements.txt
 ```
 
 ---
 
-## ✨ Features in Detail
+## 🎓 Content Modules
 
-### RAG System
-- **Semantic Search:** Cohere embeddings for understanding context
-- **Vector Database:** Qdrant stores 93 indexed chunks
-- **Intelligent Retrieval:** Top 3 most relevant chunks per query
-- **Source Attribution:** Every answer includes textbook references
-
-### Chat Widget
-- **Floating Button:** Non-intrusive, always accessible
-- **Slide-in Panel:** Smooth animations, 400×600px on desktop
-- **Message History:** User and assistant messages styled distinctly
-- **Collapsible Sources:** Expandable citations with textbook excerpts
-- **Thread Persistence:** Conversations survive page refreshes
-
-### Backend API
-- **Async Operations:** Fast, concurrent request handling
-- **Error Handling:** Graceful failures with user-friendly messages
-- **Rate Limiting:** Respects API quotas (15 RPM for Gemini)
-- **Database Persistence:** All conversations saved in Neon Postgres
+1. **Introduction to Physical AI** (5 chapters)
+2. **ROS 2 Fundamentals** (4 chapters)
+3. **Robot Simulation with Gazebo** (3 chapters)
+4. **NVIDIA Isaac Platform** (3 chapters)
+5. **Humanoid Robot Development** (5 chapters)
+6. **Conversational Robotics** (3 chapters)
 
 ---
 
-## 🧪 Testing
-
-### Manual Testing
-```bash
-# 1. Start both servers (frontend + backend)
-# 2. Open http://localhost:3000
-# 3. Click chat button
-# 4. Send test queries:
-#    - "What is Physical AI?"
-#    - "Tell me about ROS 2"
-#    - "Explain embodied intelligence"
-# 5. Verify responses and sources
-# 6. Refresh page and check history persists
-```
-
-### API Testing
-```bash
-# Health check
-curl http://localhost:8000/api/health
-
-# Chat endpoint
-curl -X POST http://localhost:8000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{"message": "What is Physical AI?", "thread_id": null}'
-```
-
----
-
-## 🎓 Educational Content
-
-### Module 1: Foundations of Physical AI
-- Chapter 1: Introduction to Physical AI
-- Chapter 2: Sensors and Perception
-- Chapter 3: Humanoid Robotics Overview
-
-### Module 2: Robot Operating System (ROS 2)
-- Chapter 4: ROS 2 Fundamentals
-- Chapter 5: Nodes, Topics, and Services
-- Chapter 6: Building ROS 2 Applications
-
-### Module 3: Simulation and Digital Twins
-- Chapter 7: Gazebo Simulation
-- Chapter 8: NVIDIA Isaac Sim
-- Chapter 9: Digital Twin Concepts
-
-### Module 4: Motion and Control
-- Chapter 10: Kinematics and Dynamics
-- Chapter 11: Locomotion Strategies
-- Chapter 12: Manipulation and Grasping
-
-### Module 5: Advanced Topics
-- Chapter 13: Learning and Adaptation
-- Chapter 14: Real-World Deployment
-- Chapter 15: Future of Physical AI
-
----
-
-## 🔑 API Keys Required
+## 🔑 API Keys Setup
 
 ### Google Gemini (FREE)
-1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey)
-2. Create API key
-3. Add to `.env` as `GEMINI_API_KEY`
+- Get: https://aistudio.google.com/app/apikey
+- Add to `.env`: `GEMINI_API_KEY=...`
 
-### Cohere (FREE)
-1. Sign up at [Cohere](https://cohere.com)
-2. Get API key from dashboard
-3. Add to `.env` as `COHERE_API_KEY`
+### Qdrant Cloud (FREE - 1GB)
+- Sign up: https://cloud.qdrant.io
+- Add: `QDRANT_URL=...` and `QDRANT_API_KEY=...`
 
-### Qdrant Cloud (FREE)
-1. Create account at [Qdrant](https://cloud.qdrant.io)
-2. Create cluster
-3. Add URL and API key to `.env`
+### Neon Postgres (FREE - 0.5GB)
+- Sign up: https://neon.tech
+- Add: `DATABASE_URL=...`
 
-### Neon Postgres (FREE)
-1. Sign up at [Neon](https://neon.tech)
-2. Create project
-3. Copy connection string to `.env` as `DATABASE_URL`
-
----
-
-## 📈 Performance
-
-- **Response Time:** <5 seconds average
-- **Embedding Generation:** ~200ms (Cohere)
-- **Vector Search:** ~100ms (Qdrant)
-- **LLM Generation:** ~3-4 seconds (Gemini)
-- **Database Query:** ~50ms (Neon)
+### JWT Secret
+```bash
+python -c "import secrets; print(secrets.token_urlsafe(32))"
+# Add to .env: SECRET_KEY=...
+```
 
 ---
 
 ## 🐛 Troubleshooting
 
+### Chat Error: "Failed to connect"
+**Fix:** Update `ChatWidget.jsx` API URL:
+```javascript
+const API_BASE_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:8000'
+  : 'https://abu-bakar1yousafzai-deploy-backend.hf.space';
+```
+
+### Signup Error: "Failed to fetch"
+**Fix:** Update `authService.js` API URL (same as above)
+
 ### CORS Error
-**Issue:** `Access to fetch blocked by CORS policy`
-
-**Solution:** Verify `backend/app/main.py` has CORS middleware:
+**Fix:** Add your frontend URL to `backend/app/main.py`:
 ```python
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+allow_origins=["https://textbook-physical-ai-humanoid-robotics.vercel.app"]
 ```
 
-### Backend Not Responding
-**Issue:** Chat shows "connection error"
+### Backend Down
+- Check: https://abu-bakar1yousafzai-deploy-backend.hf.space/api/health
+- Restart HF Space if needed
 
-**Solution:** Check backend is running:
+---
+
+## 🚀 Deployment
+
+### Frontend (Vercel)
+Auto-deploys on `git push` to main.
+
+**Manual:**
 ```bash
-cd backend
-uvicorn app.main:app --reload
+cd docusaurus
+vercel --prod
 ```
 
-### Database Connection Closed
-**Issue:** `connection is closed` error
+### Backend (Hugging Face)
+Already deployed at: https://abu-bakar1yousafzai-deploy-backend.hf.space
 
-**Solution:** Already fixed with `pool_pre_ping=True` in `db/session.py`
+**Update:**
+```bash
+git clone https://huggingface.co/spaces/abu-bakar1yousafzai/deploy-backend
+# Copy updated files
+git push
+```
+
+---
+
+## 📈 Performance
+
+- **Page Load:** <2s (Vercel CDN)
+- **Chat Response:** <5s
+  - Embeddings: ~200ms (local)
+  - Vector Search: ~100ms
+  - LLM: ~3-4s
+- **Auth:** <500ms
 
 ---
 
 ## 🤝 Contributing
 
-Contributions welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
----
-
-## 📝 License
-
-This project is created for educational purposes.
-
----
-
-## 🙏 Acknowledgments
-
-- **Docusaurus** for the amazing documentation framework
-- **FastAPI** for the high-performance backend
-- **OpenAI** for the Agents SDK
-- **Google** for Gemini LLM (free tier!)
-- **Cohere** for embedding models
-- **Qdrant** for vector database
-- **Neon** for serverless Postgres
+1. Fork the repo
+2. Create branch: `git checkout -b feature/name`
+3. Commit: `git commit -m 'Add feature'`
+4. Push: `git push origin feature/name`
+5. Open Pull Request
 
 ---
 
 ## 📧 Contact
 
-**Author:** Abubakar Yousafzai  
+**Author:** Abu Bakar Yousafzai  
 **GitHub:** [@abubakar1yousafzai](https://github.com/abubakar1yousafzai)  
-**Project:** [Physical AI Textbook](https://github.com/abubakar1yousafzai/Physical-AI-Humanoid-Robotics-TextBook)  
-**Live Demo:** [https://textbook-physical-ai-humanoid-robotics.vercel.app/](https://textbook-physical-ai-humanoid-robotics.vercel.app/)
+**X:** [@Abu_bakar_x](https://x.com/Abu_bakar_x)  
+**LinkedIn:** [abu-bakar-profile](https://www.linkedin.com/in/abu-bakar-profile/)
+
+**Links:**
+- **Live Demo:** https://textbook-physical-ai-humanoid-robotics.vercel.app/
+- **Backend API:** https://abu-bakar1yousafzai-deploy-backend.hf.space/docs
+- **Repository:** https://github.com/abubakar1yousafzai/Physical-AI-Humanoid-Robotics-TextBook
 
 ---
 
-## ⭐ Star History
+## 🙏 Acknowledgments
 
-If you find this project helpful, please give it a star! ⭐
+**Services (All FREE):**
+- Vercel - Frontend hosting
+- Hugging Face - Backend hosting
+- Google Gemini - LLM (15 RPM)
+- Qdrant Cloud - Vector DB (1GB)
+- Neon - Postgres (0.5GB)
+
+**Tech:**
+- Docusaurus, FastAPI, FastAPI-Users, Sentence Transformers
 
 ---
 
-**Built with ❤️ for the Physical AI and Robotics community**
+**Built with ❤️ for the Physical AI community**
+

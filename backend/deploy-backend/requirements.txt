@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+openai-agents
+sentence-transformers
+torch
+qdrant-client
+pydantic-settings
+python-dotenv
+httpx
+sqlalchemy[asyncio]
+asyncpg
+alembic
+fastapi-users[sqlalchemy]
+python-jose[cryptography]
+passlib[bcrypt]
