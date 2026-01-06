@@ -31,7 +31,9 @@ def search_context(query: str, limit: int = 3) -> List[str]:
     # Extract text content. Prioritize 'text', fall back to string dump of payload
     return [hit.payload.get('text', str(hit.payload)) for hit in results]
 
-async def process_chat(request: ChatRequest, db: AsyncSession) -> ChatResponse:
+from app.models.user import User
+
+async def process_chat(request: ChatRequest, db: AsyncSession, user: Optional[User] = None) -> ChatResponse:
     """Process query with RAG and persistence"""
     
     # 1. Handle Conversation/Thread
@@ -40,10 +42,14 @@ async def process_chat(request: ChatRequest, db: AsyncSession) -> ChatResponse:
         conversation = await chat_crud.get_conversation(db, thread_id_str)
         if not conversation:
              # Create new if not found
-             conversation = await chat_crud.create_conversation(db)
+             conversation = await chat_crud.create_conversation(db, user_id=user.id if user else None)
              thread_id_str = conversation.id
+        elif user and not conversation.user_id:
+             # If conversation exists but not linked to user, link it
+             conversation.user_id = user.id
+             await db.commit()
     else:
-        conversation = await chat_crud.create_conversation(db)
+        conversation = await chat_crud.create_conversation(db, user_id=user.id if user else None)
         thread_id_str = conversation.id
 
     # 2. Save User Message

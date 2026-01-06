@@ -1,0 +1,85 @@
+.navLinks {
+  display: flex;
+  align-items: center;
+}
+
+.userDropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.userBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.userBtn:hover {
+  border-color: var(--neon-cyan);
+}
+
+.userName {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.avatar {
+  background: var(--neon-cyan);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  right: 0;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 100;
+  border-radius: 12px;
+  margin-top: 10px;
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.userDropdown:hover .dropdownContent {
+  display: block;
+}
+
+.dropdownContent a, .logoutBtn {
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.dropdownContent a:hover, .logoutBtn:hover {
+  background: rgba(0, 255, 242, 0.1);
+  color: var(--neon-cyan);
+}
+
+.dropdownContent hr {
+  margin: 5px 0;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logoutBtn {
+  color: var(--neon-pink);
+}

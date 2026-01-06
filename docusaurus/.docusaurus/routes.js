@@ -38,8 +38,28 @@ export default [
     exact: true
   },
   {
+    path: '/dashboard',
+    component: ComponentCreator('/dashboard', '857'),
+    exact: true
+  },
+  {
+    path: '/login',
+    component: ComponentCreator('/login', 'a8c'),
+    exact: true
+  },
+  {
     path: '/markdown-page',
     component: ComponentCreator('/markdown-page', '3d7'),
+    exact: true
+  },
+  {
+    path: '/profile',
+    component: ComponentCreator('/profile', 'ef2'),
+    exact: true
+  },
+  {
+    path: '/signup',
+    component: ComponentCreator('/signup', 'e02'),
     exact: true
   },
   {

@@ -4,10 +4,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from app.models.sql import Conversation, Message
 
-async def create_conversation(db: AsyncSession) -> Conversation:
+import uuid
+
+async def create_conversation(db: AsyncSession, user_id: Optional[uuid.UUID] = None) -> Conversation:
     """Create a new conversation with a unique ID."""
-    conversation_id = str(uuid4())
-    db_conversation = Conversation(id=conversation_id)
+    conversation_id = str(uuid.uuid4())
+    db_conversation = Conversation(id=conversation_id, user_id=user_id)
     db.add(db_conversation)
     await db.commit()
     await db.refresh(db_conversation)
@@ -17,6 +19,15 @@ async def get_conversation(db: AsyncSession, conversation_id: str) -> Optional[C
     """Retrieve a conversation by ID."""
     result = await db.execute(select(Conversation).where(Conversation.id == conversation_id))
     return result.scalar_one_or_none()
+
+async def get_user_conversations(db: AsyncSession, user_id: uuid.UUID) -> List[Conversation]:
+    """Retrieve all conversations for a specific user."""
+    result = await db.execute(
+        select(Conversation)
+        .where(Conversation.user_id == user_id)
+        .order_by(Conversation.created_at.desc())
+    )
+    return list(result.scalars().all())
 
 async def add_message(
     db: AsyncSession, conversation_id: str, role: str, content: str

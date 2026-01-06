@@ -74,7 +74,7 @@ const Quiz = ({ questions }) => {
         </div>
       )}
       <div className={styles.navigation}>
-        <button onClick={handlePrevious} disabled={currentQuestionIndex === 0}>Previous</button>
+        <button onClick={handlePrevious} disabled={currentQuestionIndex === 0}>Back</button>
         {!isLastQuestion && <button onClick={handleNext} disabled={!isAnswered}>Next</button>}
         {isLastQuestion && isAnswered && (
             <div className={styles.score}>

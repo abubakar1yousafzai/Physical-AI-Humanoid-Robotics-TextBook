@@ -42,12 +42,40 @@
       "plugin": "plugin---docusaurus-debugb-38-ad3"
     }
   },
+  "/dashboard-857": {
+    "__comp": "__comp---site-src-pages-dashboard-jsde-3-f66",
+    "__context": {
+      "plugin": "plugin---dashboarda-74-0f3"
+    },
+    "config": "config---dashboard-5-e-9-f57"
+  },
+  "/login-a8c": {
+    "__comp": "__comp---site-src-pages-login-js-380-710",
+    "__context": {
+      "plugin": "plugin---dashboarda-74-0f3"
+    },
+    "config": "config---dashboard-5-e-9-f57"
+  },
   "/markdown-page-3d7": {
     "__comp": "__comp---theme-mdx-page-1-f-3-b90",
     "__context": {
-      "plugin": "plugin---markdown-pagea-74-7b5"
+      "plugin": "plugin---dashboarda-74-0f3"
     },
     "content": "content---markdown-page-393-028"
+  },
+  "/profile-ef2": {
+    "__comp": "__comp---site-src-pages-profile-jsd-07-cca",
+    "__context": {
+      "plugin": "plugin---dashboarda-74-0f3"
+    },
+    "config": "config---dashboard-5-e-9-f57"
+  },
+  "/signup-e02": {
+    "__comp": "__comp---site-src-pages-signup-js-83-a-147",
+    "__context": {
+      "plugin": "plugin---dashboarda-74-0f3"
+    },
+    "config": "config---dashboard-5-e-9-f57"
   },
   "/docs-4e8": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
@@ -277,8 +305,8 @@
   "/-2e1": {
     "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
     "__context": {
-      "plugin": "plugin---markdown-pagea-74-7b5"
+      "plugin": "plugin---dashboarda-74-0f3"
     },
-    "config": "config---5-e-9-4f3"
+    "config": "config---dashboard-5-e-9-f57"
   }
 }
