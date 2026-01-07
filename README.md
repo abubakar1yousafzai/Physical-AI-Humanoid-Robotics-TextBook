@@ -200,7 +200,7 @@ GET /docs  # Swagger UI
 
 ---
 
-## 🎓 Content Modules
+##  Content Modules
 
 1. **Introduction to Physical AI** (4 chapters)
 2. **ROS 2 Fundamentals** (4 chapters)
@@ -293,7 +293,7 @@ git push
   
 ---
 
-## 📧 Contact
+##  Contact
 
 **Author:** Abu Bakar Yousafzai  
 **GitHub:** [@abubakar1yousafzai](https://github.com/abubakar1yousafzai)  
@@ -307,7 +307,7 @@ git push
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 **Services (All FREE):**
 - Vercel - Frontend hosting
