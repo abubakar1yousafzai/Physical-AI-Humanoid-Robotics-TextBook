@@ -29,7 +29,7 @@ User Browser → Frontend (Docusaurus) → Backend (FastAPI)
                   OpenAI Agents      Qdrant Vector      Neon Postgres
                        SDK           (Embeddings)      (Users + Chats)
                          ↓
-                  Gemini 2.0 LLM
+                  Gemini 2.5 flash LLM
                     (FREE)
 ```
 
