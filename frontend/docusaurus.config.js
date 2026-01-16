@@ -78,7 +78,7 @@ const config = {
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/abubakar1yousafzai/Physical-AI-Humanoid-Robotics-TextBook',
+            href: 'https://github.com/Abdul-Rehman920/Physical-AI-Humanoid-Robotics-',
             label: 'GitHub',
             position: 'right',
           },
@@ -106,11 +106,11 @@ const config = {
           
               {
                 label: 'LinkedIn',
-                href: 'https://www.linkedin.com/in/abu-bakar-profile/',
+                href: 'https://www.linkedin.com/in/abdul-rehman-4a42552a8/',
               },
               {
                 label: 'X',
-                href: 'https://x.com/Abu_bakar_x',
+                href: 'https://x.com/AbdulRehma74902',
               },
             ],
           },
@@ -119,7 +119,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/abubakar1yousafzai',
+                href: 'https://github.com/Abdul-Rehman920',
               },
             ],
           },
@@ -128,11 +128,11 @@ const config = {
             items: [
               {
                 label: 'Source Code',
-                href: 'https://github.com/abubakar1yousafzai/Physical-AI-Humanoid-Robotics-TextBook',
+                href: 'https://github.com/Abdul-Rehman920/Physical-AI-Humanoid-Robotics-',
               },
               {
                 label: 'Report Issue',
-                href: 'https://github.com/abubakar1yousafzai/Physical-AI-Humanoid-Robotics-TextBook/issues',
+                href: 'https://github.com/Abdul-Rehman920/Physical-AI-Humanoid-Robotics-/issues',
               },
             ],
           },
