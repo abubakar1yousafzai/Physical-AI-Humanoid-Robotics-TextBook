@@ -11,23 +11,26 @@ Interactive educational platform with AI-powered chat, user authentication, and 
 
 - **23 Chapters** across 6 modules on Physical AI and Humanoid Robotics
 - **AI Chat Assistant** with RAG (Retrieval-Augmented Generation)
+- **Agent-based Architecture** using OpenAI Agents SDK
 - **User Authentication** - signup, login, protected routes
 - **Chat History** - saved per user with thread management
 - **Text Selection** - select text and ask AI about it
 - **Neon Theme UI** - modern glassmorphism design
 - **Fully Deployed** - Frontend on Vercel, Backend on Hugging Face
 - **100% FREE** - All services on free tiers
-
 ---
 
-## 🏗️ Architecture
+##  Architecture
 ```
-User Browser → Docusaurus Frontend → FastAPI Backend
-                                    ↓
-                    ┌───────────────┼───────────────┐
-                    ↓               ↓               ↓
-              Gemini 2.0      Qdrant Vector   Neon Postgres
-              (LLM, FREE)     (Embeddings)    (Users + Chats)
+User Browser → Frontend (Docusaurus) → Backend (FastAPI)
+                                         ↓
+                         ┌───────────────┼────────────────────┐
+                         ↓               ↓                    ↓
+                  OpenAI Agents      Qdrant Vector      Neon Postgres
+                       SDK           (Embeddings)      (Users + Chats)
+                         ↓
+                  Gemini 2.5 flash LLM
+                    (FREE)
 ```
 
 ---
@@ -37,12 +40,13 @@ User Browser → Docusaurus Frontend → FastAPI Backend
 ### Frontend
 - **Docusaurus 3.9** - Static site generator
 - **Custom Theme** - Neon colors with glassmorphism
-- **Chat Widget** - Pure JavaScript (no React library)
+- **Chat Widget** - JavaScript 
 - **Auth Pages** - Login, signup, dashboard, profile
 - **Deployment** - Vercel with auto-deploy
 
 ### Backend
 - **FastAPI** - Python async web framework
+- **OpenAI Agents SDK** - Agent orchestration framework
 - **FastAPI-Users** - Authentication with JWT
 - **Sentence Transformers** - Local embeddings (FREE)
 - **Google Gemini 2.0 Flash** - LLM (FREE, 15 RPM)
@@ -52,7 +56,31 @@ User Browser → Docusaurus Frontend → FastAPI Backend
 
 ---
 
-## 📦 Installation
+## 🤖 AI Agent Architecture
+
+### OpenAI Agents SDK Integration
+
+The backend uses **OpenAI Agents SDK** to orchestrate the RAG pipeline:
+
+**Agent Flow:**
+1. **User Query** → Received by FastAPI endpoint
+2. **Agent Initialization** → OpenAI Agents SDK creates context
+3. **Tool Execution:**
+   - **Embedding Tool** → Sentence Transformers generates query vector
+   - **Search Tool** → Qdrant retrieves top 3 relevant chunks
+   - **Context Tool** → Formats retrieved chunks for LLM
+4. **LLM Generation** → Google Gemini 2.0 Flash generates answer
+5. **Response** → Agent returns structured response with sources
+
+**Benefits:**
+- **Orchestration** - Manages tool execution order
+- **Context Management** - Handles conversation history
+- **Error Handling** - Graceful fallbacks
+- **Extensibility** - Easy to add new tools
+
+---
+
+##  Installation
 
 ### Prerequisites
 - Node.js 18+
@@ -111,7 +139,7 @@ uv run uvicorn app.main:app --reload  # http://localhost:8000
 
 ---
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 **Base URL:** `https://abu-bakar1yousafzai-deploy-backend.hf.space`
 ```bash
@@ -133,7 +161,7 @@ GET /docs  # Swagger UI
 
 ---
 
-## 📊 Project Structure
+##  Project Structure
 ```
 ├── Dockerfile                    # Hugging Face deployment
 ├── README.md
@@ -164,7 +192,7 @@ GET /docs  # Swagger UI
     │   ├── core/                 # Config, auth setup
     │   ├── models/               # User, conversation
     │   ├── services/
-    │   │   └── rag.py            # RAG logic
+    │   │   └── rag.py            # RAG with Agents SDK
     │   └── main.py
     ├── alembic/                  # Migrations
     └── requirements.txt
@@ -172,18 +200,18 @@ GET /docs  # Swagger UI
 
 ---
 
-## 🎓 Content Modules
+##  Content Modules
 
-1. **Introduction to Physical AI** (5 chapters)
+1. **Introduction to Physical AI** (4 chapters)
 2. **ROS 2 Fundamentals** (4 chapters)
-3. **Robot Simulation with Gazebo** (3 chapters)
-4. **NVIDIA Isaac Platform** (3 chapters)
-5. **Humanoid Robot Development** (5 chapters)
+3. **Robot Simulation with Gazebo** (4 chapters)
+4. **NVIDIA Isaac Platform** (4 chapters)
+5. **Humanoid Robot Development** (4 chapters)
 6. **Conversational Robotics** (3 chapters)
 
 ---
 
-## 🔑 API Keys Setup
+##  API Keys Setup
 
 ### Google Gemini (FREE)
 - Get: https://aistudio.google.com/app/apikey
@@ -205,7 +233,7 @@ python -c "import secrets; print(secrets.token_urlsafe(32))"
 
 ---
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### Chat Error: "Failed to connect"
 **Fix:** Update `ChatWidget.jsx` API URL:
@@ -253,28 +281,19 @@ git push
 
 ---
 
-## 📈 Performance
+##  Performance
 
 - **Page Load:** <2s (Vercel CDN)
 - **Chat Response:** <5s
+  - Agent Orchestration: ~100ms
   - Embeddings: ~200ms (local)
   - Vector Search: ~100ms
   - LLM: ~3-4s
 - **Auth:** <500ms
-
+  
 ---
 
-## 🤝 Contributing
-
-1. Fork the repo
-2. Create branch: `git checkout -b feature/name`
-3. Commit: `git commit -m 'Add feature'`
-4. Push: `git push origin feature/name`
-5. Open Pull Request
-
----
-
-## 📧 Contact
+##  Contact
 
 **Author:** Abu Bakar Yousafzai  
 **GitHub:** [@abubakar1yousafzai](https://github.com/abubakar1yousafzai)  
@@ -288,7 +307,7 @@ git push
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 **Services (All FREE):**
 - Vercel - Frontend hosting
