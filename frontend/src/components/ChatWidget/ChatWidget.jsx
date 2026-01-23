@@ -323,7 +323,11 @@ const ChatWidget = () => {
             )}
             {loading && (
               <div className="chat-message assistant-message">
-                <span className="typing-indicator">Thinking...</span>
+                <div className="typing-indicator" aria-label="Thinking">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
               </div>
             )}
             {error && (

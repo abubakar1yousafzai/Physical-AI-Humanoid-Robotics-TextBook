@@ -88,57 +88,56 @@ const config = {
           },
         ],
       },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Book',
-                to: '/docs/preface',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-          
-              {
-                label: 'LinkedIn',
-                href: 'https://www.linkedin.com/in/abdul-rehman-4a42552a8/',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/AbdulRehma74902',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/Abdul-Rehman920',
-              },
-            ],
-          },
-          {
-            title: 'Project',
-            items: [
-              {
-                label: 'Source Code',
-                href: 'https://github.com/Abdul-Rehman920/Physical-AI-Humanoid-Robotics-',
-              },
-              {
-                label: 'Report Issue',
-                href: 'https://github.com/Abdul-Rehman920/Physical-AI-Humanoid-Robotics-/issues',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics.`,
-      },
+footer: {
+  style: 'dark',
+  links: [
+    {
+      title: 'Docs',
+      items: [
+        {
+          label: 'Book',
+          to: '/docs/preface',
+        },
+      ],
+    },
+    {
+      title: 'Community',
+      items: [
+        {
+          label: 'LinkedIn',
+          href: 'https://www.linkedin.com/in/abdul-rehman-4a42552a8/',
+        },
+        {
+          label: 'X',
+          href: 'https://x.com/AbdulRehma74902',
+        },
+      ],
+    },
+    {
+      title: 'More',
+      items: [
+        {
+          label: 'GitHub',
+          href: 'https://github.com/Abdul-Rehman920',
+        },
+      ],
+    },
+    {
+      title: 'Project',
+      items: [
+        {
+          label: 'Source Code',
+          href: 'https://github.com/Abdul-Rehman920/Physical-AI-Humanoid-Robotics-',
+        },
+        {
+          label: 'Report Issue',
+          href: 'https://github.com/Abdul-Rehman920/Physical-AI-Humanoid-Robotics-/issues',
+        },
+      ],
+    },
+  ],
+  copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics.`,
+},
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,

@@ -190,14 +190,47 @@
   box-shadow: 0 0 15px rgba(255, 0, 110, 0.2);
 }
 
+
+
+/* Typing Indicator */
 .typing-indicator {
-  font-style: italic;
-  color: var(--neon-cyan);
-  font-size: 12px;
   display: flex;
   align-items: center;
   gap: 6px;
-  filter: drop-shadow(0 0 5px var(--neon-cyan));
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  width: fit-content;
+  margin-top: 4px;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background: var(--neon-cyan);
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounce 1.4s infinite ease-in-out both;
+  box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { 
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% { 
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .guest-prompt {
@@ -300,5 +333,10 @@
   .chat-input-area {
     padding: 16px;
     padding-bottom: env(safe-area-inset-bottom, 20px);
+  }
+
+  /* Adjust typing indicator for smaller screens if necessary */
+  .typing-indicator {
+    padding: 6px 10px;
   }
 }
